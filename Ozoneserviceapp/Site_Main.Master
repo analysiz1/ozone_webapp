@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_Main.Master.cs" Inherits="Ozoneservice.Master_main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link href="Css/Style1.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+           
+      <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span> OzoneService</a>
+    </div>
+    <ul class="nav navbar-nav">
+     
+      <li class="dropdown">
+        <a class="dropdown-toggle glyphicon glyphicon-road" data-toggle="dropdown" href="#"> ระบบจัดการการอบรม
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="Training_Record.aspx">สร้างหัวข้อบรม</a></li>
+          <li><a href="/ManageTrainning.aspx">จัดการหัวข้ออบรม</a></li>
+              <li><a href="/Training_View.aspx">ข้อมูลการอบรม</a></li>          
+            <li><a href="/Report2.aspx">รายงานการอบรบ(รายบุคคล)</a></li>       
+            <li><a href="/Report1.aspx">รายงานการอบรม(ยอดรวมผู้เข้าร่วมทั้งหมด)</a></li>    
+            <li><a href="/Training_Result.aspx">รายงานการอบรม(ภาพรวมการนับรายเก่า-รายใหม่/และตำแหน่งผู้เข้าร่วม)</a></li>
+
+        </ul>
+      </li>
+
+         <li class="dropdown">
+        <a class="dropdown-toggle glyphicon glyphicon-folder-open" data-toggle="dropdown" href="#"> Stock 
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">นำเข้า</a></li>
+          <li><a href="#">นำออก</a></li>
+          <li><a href="#">รายงานสต๊อค</a></li> 
+        </ul>
+      </li>
+
+         <li class="dropdown">
+        <a class="dropdown-toggle glyphicon glyphicon-stats " data-toggle="dropdown" href="#"> ข้อมูลUIC 
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">เพิ่มสมาชิก</a></li>
+          <li><a href="#">10 คำถาม</a></li>
+          <li><a href="#">รายงาน</a></li> 
+        </ul>
+      </li>
+
+    
+    </ul>
+  </div>
+</nav>
+           <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+    </div>
+
+              
+  
+
+  <div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="navbar-text pull-left">© 2015 - Site Built By Mr.peerapon
+         
+      </p>
+      
+      
+    </div>
+    
+    
+  </div>
+
+
+    </form>
+</body>
+</html>

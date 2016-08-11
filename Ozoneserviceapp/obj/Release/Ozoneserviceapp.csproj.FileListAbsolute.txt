@@ -1,0 +1,5 @@
+D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\bin\Ozoneserviceapp.dll
+D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\bin\Ozoneserviceapp.pdb
+D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\obj\Release\Ozoneserviceapp.csprojResolveAssemblyReference.cache
+D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\obj\Release\Ozoneserviceapp.dll
+D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\obj\Release\Ozoneserviceapp.pdb
