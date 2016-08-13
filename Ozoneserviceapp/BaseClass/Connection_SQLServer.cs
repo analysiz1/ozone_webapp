@@ -40,5 +40,32 @@ namespace Ozoneserviceapp.BaseClass
             }
         }
 
+        public bool UpdateTraining(string sql)
+        {
+            try
+            {
+                sqlCon.Open();
+                SqlCommand sqlcomm = new SqlCommand(sql, sqlCon);
+
+                int _row = sqlcomm.ExecuteNonQuery();
+
+                if(_row > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw(new Exception("DBConnect error : " + ex.Message ));
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+        }
     }
 }

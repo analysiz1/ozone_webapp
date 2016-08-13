@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ozoneserviceapp.BaseClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -81,19 +82,39 @@ namespace Ozoneservice.UI.Training
                     RegisterClientScriptBlock("OnLoad", "<script>alert('" + _msgErr + "!')</script>");
                     return;
                 }
+                string title = txtTitle.Text;
+                string owner = txtOwner.Text;
+                string address = txtAddress.Text;
+                string startdate = "1/1/2559";
+                string enddate = "2/1/2559";
+                string participant = txtParticipant.Text;
 
+                string sql = "insert into tbTrainning (Trainning_name,Trainning_address,Trainning_startdate,Trainning_enddate,Trainning_owner,Trainning_no,Trainning_province)" +
+                             " values ('"+title+"','"+address+"','"+startdate+"','"+enddate+"','"+owner+"','1','1')";
+
+                Connection_SQLServer conSql = new Connection_SQLServer();
+
+                bool chk = conSql.UpdateTraining(sql);
+
+                
                 //Response.Write("Title : " + txtTitle.Text + "\n");
                 //Response.Write("Owner : " + txtOwner.Text + "\n");
                 //Response.Write("Address : " + txtAddress.Text + "\n");
                 //Response.Write("Start Date : " + dateStart.Value + "\n");
                 //Response.Write("End Date : " + dateEnd.Value + "\n");
                 //Response.Write("Participant : " + txtParticipant.Text + "\n");
-
-                RegisterClientScriptBlock("OnLoad", "<script>alert('Complete!')</script>");
+                if (chk)
+                {
+                    RegisterClientScriptBlock("OnLoad", "<script>alert('Complete!')</script>");
+                }
+                else
+                {
+                    RegisterClientScriptBlock("OnLoad", "<script>alert('Save Fail!')</script>");
+                }
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message.ToString());
+                Response.Write("<script>alert('" + Server.HtmlEncode(ex.Message.ToString()) + "')</script>");
             }
         }
     }
