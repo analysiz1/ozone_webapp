@@ -32,8 +32,7 @@ namespace Ozoneserviceapp.BaseClass
             }
             catch (Exception ex)
             {
-                HttpContext.Current.Response.Write("<script>alert('DBConnect error : '" + ex.Message + "');</script>");
-                return null;
+                throw(new Exception("DBConnect error : '" + ex.Message + "'"));
             }
             finally
             {
