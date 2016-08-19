@@ -28,8 +28,8 @@
         <a class="dropdown-toggle glyphicon glyphicon-road" data-toggle="dropdown" href="#"> ระบบจัดการการอบรม
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="Training_Record.aspx">สร้างหัวข้อบรม</a></li>
-          <li><a href="/ManageTrainning.aspx">จัดการหัวข้ออบรม</a></li>
+          <li><a href="/Training_Manage.aspx">จัดการหัวข้ออบรม</a></li>
+          <%--<li><a href="/ManageTrainning.aspx">จัดการหัวข้ออบรม</a></li>--%>
               <li><a href="/Training_View.aspx">ข้อมูลการอบรม</a></li>          
             <li><a href="/Report2.aspx">รายงานการอบรบ(รายบุคคล)</a></li>       
             <li><a href="/Report1.aspx">รายงานการอบรม(ยอดรวมผู้เข้าร่วมทั้งหมด)</a></li>    

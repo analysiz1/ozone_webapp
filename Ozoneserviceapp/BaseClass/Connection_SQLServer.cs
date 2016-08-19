@@ -40,7 +40,29 @@ namespace Ozoneserviceapp.BaseClass
             }
         }
 
-        public bool UpdateTraining(string sql)
+        public DataTable GetTitleTraining()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                sqlCon.Open();
+                string command = "select Trainning_id,Trainning_name,Trainning_no from tbTrainning where Trainning_status = 1";
+                SqlDataAdapter da = new SqlDataAdapter(command, sqlCon);
+                da.Fill(dt);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw (new Exception("DBConnect error : '" + ex.Message + "'"));
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+        }
+
+        public bool UpdateData(string sql)
         {
             try
             {

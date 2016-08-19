@@ -102,15 +102,19 @@
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="Training_Manage.aspx" />
     <Content Include="Training_Record.aspx" />
     <Content Include="Training_Result.aspx" />
     <Content Include="Training_View.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.0.min.map" />
     <Content Include="Site_Main.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClass\Connection_SQLServer.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -160,6 +164,13 @@
     </Compile>
     <Compile Include="Site_Main.Master.designer.cs">
       <DependentUpon>Site_Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Training_Manage.aspx.cs">
+      <DependentUpon>Training_Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training_Manage.aspx.designer.cs">
+      <DependentUpon>Training_Manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Training_Record.aspx.cs">
       <DependentUpon>Training_Record.aspx</DependentUpon>

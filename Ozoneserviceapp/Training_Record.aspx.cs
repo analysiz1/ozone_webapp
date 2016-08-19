@@ -94,7 +94,7 @@ namespace Ozoneservice.UI.Training
 
                 Connection_SQLServer conSql = new Connection_SQLServer();
 
-                bool chk = conSql.UpdateTraining(sql);
+                bool chk = conSql.UpdateData(sql);
 
                 
                 //Response.Write("Title : " + txtTitle.Text + "\n");
