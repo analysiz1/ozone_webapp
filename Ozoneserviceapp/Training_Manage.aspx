@@ -28,7 +28,7 @@
                         <asp:Button ID="btnEdit"  runat="server" CssClass="btn btn-primary" value="" Text="แก้ไข" align ="center" />
                     </td>
                     <td style="border: 1px solid #333; width: auto ; align="center">
-                        <asp:Button ID="btnDelete" runat="server" CssClass="btn btn-primary" value="" Text="ลบ" align ="center" />
+                        <asp:Button ID="btnDelete" runat="server" CssClass="btn btn-primary" value="" Text="ลบ" align ="center" OnClientClick="return confirm('คุณต้องการบหัวข้อการอบรมนี้ ใช่หรือไม่ ?');" OnClick="btnDelete_Click"/>
                     </td>
                 </tr>
             <%} %>

@@ -31,6 +31,19 @@ namespace Ozoneserviceapp
             }
         }
 
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                RegisterClientScriptBlock("OnLoad", "<script>alert('" + ex.Message.ToString() + "')</script>");
+            }
+        }
+
 
 
 
