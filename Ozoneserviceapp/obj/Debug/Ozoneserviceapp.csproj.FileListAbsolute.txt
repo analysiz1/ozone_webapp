@@ -3,3 +3,9 @@ D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\bin\Ozoneserviceapp.pdb
 D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.csprojResolveAssemblyReference.cache
 D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.dll
 D:\gitproject\Ozoneserviceapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.pdb
+C:\Users\Wacoal\Documents\GitHub\ozone_webapp\Ozoneserviceapp\bin\Ozoneserviceapp.dll.config
+C:\Users\Wacoal\Documents\GitHub\ozone_webapp\Ozoneserviceapp\bin\Ozoneserviceapp.dll
+C:\Users\Wacoal\Documents\GitHub\ozone_webapp\Ozoneserviceapp\bin\Ozoneserviceapp.pdb
+C:\Users\Wacoal\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.dll
+C:\Users\Wacoal\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.pdb
+C:\Users\Wacoal\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.csprojResolveAssemblyReference.cache
