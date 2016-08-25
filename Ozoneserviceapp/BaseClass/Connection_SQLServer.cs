@@ -40,6 +40,33 @@ namespace Ozoneserviceapp.BaseClass
             }
         }
 
+        public DataTable SqlQuery(string sql)
+        {
+
+            try
+            {
+
+                DataTable dt = new DataTable();
+                sqlCon.Open();
+                string command = sql.ToString();
+                SqlDataAdapter da = new SqlDataAdapter(command, sqlCon);
+                da.Fill(dt);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw (new Exception("DBConnect error : '" + ex.Message + "'"));
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+
+
+
+        }
+
         public DataTable GetTitleTraining()
         {
             try

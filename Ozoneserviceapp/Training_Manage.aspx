@@ -46,18 +46,17 @@
 
         function btnedit(id)
         {
-           // alert('edit: ' + id);
+          
             window.location.assign("/testpage.aspx?id="+id);
 
         }
         function btndelete(id)
         {
             window.location.assign("/testpage.aspx?id=" + id);
-
         }
         function btnmanage(id)
         {
-            window.location.assign("/testpage.aspx?id=" + id);
+            window.location.assign("/ManageTrainning.aspx?id=" + id);
         }
 
 
