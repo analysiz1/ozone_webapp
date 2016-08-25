@@ -46,18 +46,18 @@
 
         function btnedit(id)
         {
-            alert('edit: '+id);
+           // alert('edit: ' + id);
+            window.location.assign("/testpage.aspx?id="+id);
 
         }
         function btndelete(id)
         {
-            alert('delete: '+id);
+            window.location.assign("/testpage.aspx?id=" + id);
 
         }
         function btnmanage(id)
         {
-
-            alert('manage: '+id);
+            window.location.assign("/testpage.aspx?id=" + id);
         }
 
 
