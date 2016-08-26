@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ozoneservice.UI.Training {
+namespace Ozoneserviceapp {
     
     
-    public partial class Training_Record {
+    public partial class Training_Edit {
         
         /// <summary>
         /// lblTitle control.
@@ -29,24 +29,6 @@ namespace Ozoneservice.UI.Training {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
-        
-        /// <summary>
-        /// ChkTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkTitle;
-        
-        /// <summary>
-        /// ddlTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTitle;
         
         /// <summary>
         /// lblOwner control.
@@ -139,13 +121,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.TextBox txtParticipant;
         
         /// <summary>
-        /// btnConfirm control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirm;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
         /// btnClear control.
