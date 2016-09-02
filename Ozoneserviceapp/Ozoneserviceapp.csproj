@@ -201,8 +201,12 @@
     <Compile Include="Training_View.aspx.designer.cs">
       <DependentUpon>Training_View.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Trainning_process.ashx.cs">
+      <DependentUpon>Trainning_process.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Trainning_process.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
