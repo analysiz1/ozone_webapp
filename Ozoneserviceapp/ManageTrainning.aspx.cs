@@ -43,6 +43,7 @@ namespace Ozoneservice
 
         public void binddataEmp()
         {
+            string dropin = ddl2.Text;
             DataTable dt = new DataTable();
             string sql = @"SELECT 
                             a.Emp_id,
@@ -86,7 +87,7 @@ namespace Ozoneservice
                 else
                 {
                     //innerHTML += "<input type='Button'  id='btnAdd' onclick='addtraining(" + dr["Emp_id"].ToString() + ",'2'," + TrainningID + ");' runat='server' value='ยกเลิกการอบรม' Class='btn btn-danger' />";
-                    innerHTML += "<input type='Button' id='btnAdd' name='" + dr["Emp_id"].ToString() + "' onclick='addtraining(" + dr["Emp_id"] + ",2," + TrainningID + "); chkstatus();' runat='server' value='ยกเลิกการอบรม' Class='btn btn-danger' />";
+                    innerHTML += "<input type='Button' id='btnAdd' name='" + dr["Emp_id"].ToString() + "' onclick='addtraining(" + dr["Emp_id"] + ",0," + TrainningID + "); chkstatus();' runat='server' value='ยกเลิกการอบรม' Class='btn btn-danger' />";
                 }
                 innerHTML += "</td>";
                 innerHTML += "</tr>";
@@ -157,6 +158,11 @@ namespace Ozoneservice
             </tr>";
 
             return thead;
+        }
+
+        protected void ddl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
        
     }
