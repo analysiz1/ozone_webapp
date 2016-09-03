@@ -51,6 +51,7 @@
                 <td>
 
                     <input type="text" name="dateStart" id="dateStart" class ="form-control" value="" runat="server" style="width: 198px;"  />
+                    <asp:TextBox ID="tbDate" runat="server" type="date"></asp:TextBox> <!-- Date picker-->
                 </td>
             </tr>
 

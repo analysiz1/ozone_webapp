@@ -12,7 +12,7 @@ namespace Ozoneservice.UI.Training
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private string CheckDataBeforeRun()
