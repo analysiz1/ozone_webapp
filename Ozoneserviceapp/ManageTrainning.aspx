@@ -18,8 +18,8 @@
       
        <div class="form-group" style="width:20%; margin-left:30px;">       
 
-       <p>Drop In</p> <asp:DropDownList ID="ddl2" runat="server" CssClass="form-control" DataSourceID="SqlDataSource2" DataTextField="DropinName" DataValueField="DropinID" OnSelectedIndexChanged="ddl2_SelectedIndexChanged">
-        <asp:ListItem></asp:ListItem>
+       <p>Drop In</p> <asp:DropDownList ID="ddl2" runat="server" CssClass="form-control" DataSourceID="SqlDataSource2" DataTextField="DropinName" DataValueField="DropinID" OnSelectedIndexChanged="ddl2_SelectedIndexChanged" AutoPostBack="True">
+        <asp:ListItem Value="0">ไม่เลือก</asp:ListItem>
         </asp:DropDownList>
            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT * FROM [tbDropin]"></asp:SqlDataSource>
            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT [DropinName] FROM [tbDropin]"></asp:SqlDataSource>

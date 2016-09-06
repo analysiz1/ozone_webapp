@@ -20,18 +20,60 @@ namespace Ozoneservice
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            TrainningID = Request.QueryString["id"];
-            if (TrainningID == null)
-            {
-                Response.Redirect("/Training_Manage.aspx");
-            }
-            else
-            {
-                TrainningName.Text = TrainningID.ToString();
-                binddataEmp();
-            }
-           
-           
+            string querystring;    
+                TrainningID = Request.QueryString["id"];
+                if (TrainningID == null)
+                {
+                    Response.Redirect("/Training_Manage.aspx");
+                }
+                else
+                {
+                    //Session["drop"] = null;
+                    string dropin = null;
+                     if (dropin != null)
+                    {
+                    TrainningName.Text = TrainningID.ToString();
+                     querystring = @"SELECT 
+                            a.Emp_id ,
+                            a.Emp_name,                           
+                            a.Emp_status,
+                            d.RoleName,
+                            e.DropinName ,    
+                            e.DropinCode ,                      
+                            '" + TrainningID + @"' as tID,
+                            b.Trainning_id,
+                            ('" + TrainningID + @"' + ':' + CAST(ISNULL(b.Status,0) as varchar)) as tStatus                                 
+                            FROM
+                            dbo.tbEmployee a
+                            LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
+                            LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
+                            INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropin + "";
+                    }
+                    else{
+                        querystring = @"SELECT 
+                            a.Emp_id ,
+                            a.Emp_name,                           
+                            a.Emp_status,
+                            d.RoleName,
+                            e.DropinName ,          
+                            e.DropinCode      ,          
+                            '" + TrainningID + @"' as tID,
+                            b.Trainning_id,
+                            ('" + TrainningID + @"' + ':' + CAST(ISNULL(b.Status,0) as varchar)) as tStatus                                 
+                            FROM
+                            dbo.tbEmployee a
+                            LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
+                            LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
+                            INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1";
+
+                    }
+                    binddataEmp(querystring);
+                }
+
+
+            
            
         }
 
@@ -41,25 +83,10 @@ namespace Ozoneservice
         }
 
 
-        public void binddataEmp()
+        public void binddataEmp(string sql)
         {
             string dropin = ddl2.Text;
-            DataTable dt = new DataTable();
-            string sql = @"SELECT 
-                            a.Emp_id,
-                            a.Emp_name,                           
-                            a.Emp_status,
-                            d.RoleName,
-                            e.DropinName ,                          
-                            '" + TrainningID + @"' as tID,
-                            b.Trainning_id,
-                            ('" + TrainningID + @"' + ':' + CAST(ISNULL(b.Status,0) as varchar)) as tStatus                                 
-                            FROM
-                            dbo.tbEmployee a
-                            LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= "+TrainningID+@"
-                            LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
-                            INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
-                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1";                       
+            DataTable dt = new DataTable();                          
             
             dtTraining = conSql.SqlQuery(sql);
             innerHTML = "";
@@ -72,7 +99,7 @@ namespace Ozoneservice
                 /*Content Emp*/
                 innerHTML += "<tr>";
                 innerHTML += "<td>"+"</td>";
-                innerHTML += "<td>" + dr["Emp_id"].ToString() + "</td>";
+                innerHTML += "<td>" + dr["DropinCode"].ToString() + dr["Emp_id"].ToString() + "</td>";
                 innerHTML += "<td>" + dr["Emp_name"].ToString()  + "</td>";
                 innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
                 innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
@@ -162,7 +189,30 @@ namespace Ozoneservice
 
         protected void ddl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            Session["drop"] = ddl2.Text;
+            string dropin = Session["drop"].ToString();
+
+            string sql = @"SELECT 
+                            a.Emp_id,
+                            a.Emp_name,                           
+                            a.Emp_status,
+                            d.RoleName,
+                            e.DropinName ,                          
+                              e.DropinCode      , 
+                            '" + TrainningID + @"' as tID,
+                            b.Trainning_id,
+                            ('" + TrainningID + @"' + ':' + CAST(ISNULL(b.Status,0) as varchar)) as tStatus                                 
+                            FROM
+                            dbo.tbEmployee a
+                            LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
+                            LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
+                            INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropin + "  ";
+                            
+           // Response.Write(sql);
+
+            binddataEmp(sql);
+
         }
        
     }
