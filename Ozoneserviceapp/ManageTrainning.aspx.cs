@@ -22,12 +22,15 @@ namespace Ozoneservice
         {
             string querystring;    
                 TrainningID = Request.QueryString["id"];
+             
+            
                 if (TrainningID == null)
                 {
                     Response.Redirect("/Training_Manage.aspx");
                 }
                 else
                 {
+                   
                     //Session["drop"] = null;
                     string dropin = null;
                      if (dropin != null)
@@ -85,6 +88,7 @@ namespace Ozoneservice
 
         public void binddataEmp(string sql)
         {
+            int no = 1;
             string dropin = ddl2.Text;
             DataTable dt = new DataTable();                          
             
@@ -98,7 +102,7 @@ namespace Ozoneservice
                 //{
                 /*Content Emp*/
                 innerHTML += "<tr>";
-                innerHTML += "<td>"+"</td>";
+                innerHTML += "<td>" + no++ + "</td>";
                 innerHTML += "<td>" + dr["DropinCode"].ToString() + dr["Emp_id"].ToString() + "</td>";
                 innerHTML += "<td>" + dr["Emp_name"].ToString()  + "</td>";
                 innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
@@ -128,7 +132,7 @@ namespace Ozoneservice
         protected void Btn_Search_Click(object sender, EventArgs e)
         {
             string Empname = txtEmpname.Text;
-            DataTable dt = new DataTable();
+            /*DataTable dt = new DataTable();
             string sql = @"SELECT *                         
                             FROM
                             dbo.tbEmployee where Emp_name like '%"+Empname.ToString()+"' where = "+TrainningID+" ";
@@ -141,7 +145,7 @@ namespace Ozoneservice
             
            foreach (System.Data.DataRow dr in dtTraining.Rows)
             {
-               /*Content Emp*/
+               //Content Emp
              innerHTML+= "<tr>";           
              innerHTML += "<td>" + dr["Emp_id"].ToString() + "</td>";
              innerHTML += "<td>" + dr["Emp_title"].ToString() + "</td>";
@@ -165,10 +169,29 @@ namespace Ozoneservice
              innerHTML += "</td>";   
              innerHTML+="</tr>";
                   
-       //innerHTML+= "</tr>";
+       innerHTML+= "</tr>";
               }    
                   innerHTML +="</table>     </div>";
-                  lblEmp.Text = innerHTML; // output to fontend
+                  lblEmp.Text = innerHTML;  output to fontend*/
+            string sql = @"SELECT 
+                            a.Emp_id ,
+                            a.Emp_name,                           
+                            a.Emp_status,
+                            d.RoleName,
+                            e.DropinName ,          
+                            e.DropinCode      ,          
+                            '" + TrainningID + @"' as tID,
+                            b.Trainning_id,
+                            ('" + TrainningID + @"' + ':' + CAST(ISNULL(b.Status,0) as varchar)) as tStatus                                 
+                            FROM
+                            dbo.tbEmployee a
+                            LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
+                            LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
+                            INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  Emp_name like '%" + Empname + "'";
+                            
+            binddataEmp(sql);
+        
               }
          
         public string  headtable()
