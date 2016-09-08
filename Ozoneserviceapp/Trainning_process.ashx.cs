@@ -50,11 +50,11 @@ namespace Ozoneserviceapp
             }
         }
         
-        public string AddTrainning(string Emp_id,string Train_id)
+        public void AddTrainning(string Emp_id,string Train_id)
         {            
             string AddSql = "INSERT INTO tbManageTrainning(Trainning_id,Emp_id,Status) VALUES("+Train_id+"," + Emp_id + ",1)";
-            string postback = conSql.ExcuteSql(AddSql);
-            return postback;
+            conSql.ExcuteSql(AddSql);
+            
         }
         public void DeleteTrainning(string Emp_id, string Train_id)
         {
