@@ -17,13 +17,14 @@ namespace Ozoneservice
          string TrainningID=null;
          string st = "1";
          string innerHTML;
+         string dropinID ;
 
          protected void Page_Load(object sender, EventArgs e)
          {
 
              string querystring;
              TrainningID = Request.QueryString["id"];
-
+             
 
              if (TrainningID == null)
              {
@@ -31,10 +32,12 @@ namespace Ozoneservice
              }
              else
              {
-
-                 //Session["drop"] = null;
-                 string dropin = null;
-                 if (dropin != null)
+                 if (Session["dropin"].ToString() != null)
+                 {
+                     dropinID = Session["dropin"].ToString();
+                 }
+                 else { dropinID = "1"; }
+                 if (dropinID != null)
                  {
                      TrainningName.Text = TrainningID.ToString();
                      querystring = @"SELECT 
@@ -52,10 +55,11 @@ namespace Ozoneservice
                             LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
                             LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
                             INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
-                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropin + "";
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropinID + "";
                  }
                  else
                  {
+                    
                      querystring = @"SELECT 
                             a.Emp_id ,
                             a.Emp_name,                           
@@ -174,13 +178,12 @@ namespace Ozoneservice
             <td>ตำแหน่ง</td>
             <td> </td>
             </tr>";
-
             return thead;
         }
 
         protected void ddl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string dropin = ddl2.Text;
+                      
             string sql = @"SELECT 
                             a.Emp_id ,
                             a.Emp_name,                           
@@ -196,8 +199,7 @@ namespace Ozoneservice
                             LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
                             LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
                             INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
-                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropin + "";
-
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropinID + "";
             binddataEmp(sql);
         }
        
