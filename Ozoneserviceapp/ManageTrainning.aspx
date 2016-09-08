@@ -5,16 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
      
-    <!-- <asp:Button  CssClass="btn btn-danger" style="margin-left:30px;" ID="Btncreate" runat="server" Text="สร้างหัวข้อการอบรม" OnClick="Btncreate_Click" />
-    <br />
-    <br />   
-        <div class="form-group" style="width:20%; margin-left:30px;">
-        <p>หัวข้ออบรม</p> <asp:DropDownList ID="ddl1" runat="server" CssClass="form-control" >
-        <asp:ListItem>ยาเสพติด 1</asp:ListItem>
-        <asp:ListItem>ยาเสพติด 2</asp:ListItem>
-        <asp:ListItem>ยาเสพติด 3</asp:ListItem>
-        <asp:ListItem>ยาเสพติด 4</asp:ListItem>
-        </asp:DropDownList>      -->
+  
       
        <div class="form-group" style="width:20%; margin-left:30px;">       
 
