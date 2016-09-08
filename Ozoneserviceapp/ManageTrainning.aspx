@@ -5,21 +5,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
      
-    <!-- <asp:Button  CssClass="btn btn-danger" style="margin-left:30px;" ID="Btncreate" runat="server" Text="สร้างหัวข้อการอบรม" OnClick="Btncreate_Click" />
-    <br />
-    <br />   
-        <div class="form-group" style="width:20%; margin-left:30px;">
-        <p>หัวข้ออบรม</p> <asp:DropDownList ID="ddl1" runat="server" CssClass="form-control" >
-        <asp:ListItem>ยาเสพติด 1</asp:ListItem>
-        <asp:ListItem>ยาเสพติด 2</asp:ListItem>
-        <asp:ListItem>ยาเสพติด 3</asp:ListItem>
-        <asp:ListItem>ยาเสพติด 4</asp:ListItem>
-        </asp:DropDownList>      -->
-      
+         
        <div class="form-group" style="width:20%; margin-left:30px;">       
-
+                           
        <p>Drop In</p> <asp:DropDownList ID="ddl2" runat="server" CssClass="form-control" DataSourceID="SqlDataSource2" DataTextField="DropinName" DataValueField="DropinID" OnSelectedIndexChanged="ddl2_SelectedIndexChanged" AutoPostBack="True">
-           <asp:ListItem Selected="True" Value="0">Dropin</asp:ListItem>
+        <asp:ListItem></asp:ListItem>
+
         </asp:DropDownList>
            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT * FROM [tbDropin]"></asp:SqlDataSource>
            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT [DropinName] FROM [tbDropin]"></asp:SqlDataSource>
