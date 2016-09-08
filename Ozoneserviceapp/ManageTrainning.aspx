@@ -31,12 +31,7 @@
 
     <script type="text/javascript">
         function addtraining(id, status, tid) {
-            // debugger;
-            /*
-           alert(ids);            
-            alert(status);
-            alert(tid);            
-            */
+            // debugger;           
             var obj = {
                 'Empid': id,
                 'Tid': tid,
@@ -54,19 +49,7 @@
             //return false;
             function OnComplete(result) {
                 // debugger;         
-                console.log("Success");
-               /*  var Emp_id = substring(result, 0, 3);
-                 var StatusEmp = substring(result, 3, 2);              
-            
-
-                   if (statusEmp == 1) // blue --> red
-                   {
-                       $(Empid).removeClass("btn-primary").addClass("btn-danger");
-                   }
-                   else // red --> blue
-                   {
-                       $(Empid).removeClass("btn-danger").addClass("btn-primary");
-                   }*/
+                console.log("Success");             
                 var urlweb = "/ManageTrainning.aspx?id=" + tid;
               //  alert(urlweb);
                 $.ajax({
