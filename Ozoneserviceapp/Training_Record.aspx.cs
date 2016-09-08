@@ -1,6 +1,7 @@
 ﻿using Ozoneserviceapp.BaseClass;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,9 +11,19 @@ namespace Ozoneservice.UI.Training
 {
     public partial class Training_Record : System.Web.UI.Page
     {
+        public DataTable dtTitleTraining = null;
+        Connection_SQLServer conSql = new Connection_SQLServer();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            string sql = "select Trainning_name from tbTrainning group by Trainning_name";
 
+            dtTitleTraining = conSql.SqlQuery(sql);
+
+            foreach (DataRow dr in dtTitleTraining.Rows)
+            {
+                ddlTitle.Items.Add(dr["Trainning_name"].ToString());
+            }
         }
 
         private string CheckDataBeforeRun()
@@ -33,11 +44,11 @@ namespace Ozoneservice.UI.Training
                 {
                     _msgErr = "กรุณากรอกข้อมูลสถานที่การอบรม";
                 }
-                else if (dateStart.Value.Trim().Length == 0)
+                else if (txtStartDate.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณาเลือกวันที่เริ่มการอบรม";
                 }
-                else if (dateEnd.Value.Trim().Length == 0)
+                else if (txtEndDate.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณาเลือกวันที่สิ้นสุดการอบรม";
                 }
@@ -62,8 +73,8 @@ namespace Ozoneservice.UI.Training
                 txtAddress.Text = string.Empty;
                 txtOwner.Text = string.Empty;
                 txtParticipant.Text = string.Empty;
-                dateStart.Value = null;
-                dateEnd.Value = null;
+                txtStartDate.Text = string.Empty;
+                txtEndDate.Text = string.Empty;
             }
             catch (Exception ex)
             {

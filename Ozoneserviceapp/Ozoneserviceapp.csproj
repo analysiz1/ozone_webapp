@@ -103,6 +103,7 @@
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
     <Content Include="testpage.aspx" />
+    <Content Include="Training_Edit.aspx" />
     <Content Include="Training_Manage.aspx" />
     <Content Include="Training_Record.aspx" />
     <Content Include="Training_Result.aspx" />
@@ -172,6 +173,13 @@
     </Compile>
     <Compile Include="testpage.aspx.designer.cs">
       <DependentUpon>testpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training_Edit.aspx.cs">
+      <DependentUpon>Training_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training_Edit.aspx.designer.cs">
+      <DependentUpon>Training_Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Training_Manage.aspx.cs">
       <DependentUpon>Training_Manage.aspx</DependentUpon>
