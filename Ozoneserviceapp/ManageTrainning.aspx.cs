@@ -11,7 +11,7 @@ namespace Ozoneservice
 {
     public partial class ManageTrainning : System.Web.UI.Page
     {
-
+        /*08/09/2559*/
          Connection_SQLServer conSql = new Connection_SQLServer();
          public DataTable dtTraining = null;
          string TrainningID=null;
