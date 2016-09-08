@@ -46,13 +46,13 @@
 
         function btnedit(id)
         {
-          
-            window.location.assign("/testpage.aspx?id="+id);
-
+            window.location.assign("/Training_Edit.aspx?id=" + id);
         }
         function btndelete(id)
         {
-            window.location.assign("/testpage.aspx?id=" + id);
+            if (confirm('คุณต้องการลบหัวข้ออบรม ใช่หรือไม่?')) {
+                window.location.assign("/testpage.aspx?id=" + id);
+            }
         }
         function btnmanage(id)
         {
