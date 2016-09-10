@@ -68,7 +68,7 @@
                        $(Empid).removeClass("btn-danger").addClass("btn-primary");
                    }*/
                 var urlweb = "/ManageTrainning.aspx?id=" + tid;
-              //  alert(urlweb);
+              
                 $.ajax({
                     url: urlweb,
                     context: document.body,
