@@ -17,13 +17,10 @@ namespace Ozoneservice
          string TrainningID=null;
          string st = "1";
          string innerHTML;
-         string dropID;
         
         protected void Page_Load(object sender, EventArgs e)
         {
             TrainningID = Request.QueryString["id"];
-            dropID = Request.QueryString["drop"];
-            Session["drop"] =  "1";
             if (TrainningID == null)
             {
                 Response.Redirect("/Training_Manage.aspx");
@@ -36,11 +33,6 @@ namespace Ozoneservice
            
            
            
-        }
-
-        protected void Page_Unload(object sender, EventArgs e)
-        {
-            Session.Clear();
         }
 
         protected void Btncreate_Click(object sender, EventArgs e)

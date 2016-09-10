@@ -19,8 +19,7 @@
        <div class="form-group" style="width:20%; margin-left:30px;">       
 
        <p>Drop In</p> <asp:DropDownList ID="ddl2" runat="server" CssClass="form-control">
-         <asp:ListItem></asp:ListItem>
-         <asp:ListItem>ประชาชื่น</asp:ListItem>
+        <asp:ListItem>ประชาชื่น</asp:ListItem>
         <asp:ListItem>เชียงใหม่</asp:ListItem>
         <asp:ListItem>เชียงราย</asp:ListItem>
         <asp:ListItem>สงขลา</asp:ListItem>
@@ -42,7 +41,12 @@
 
     <script type="text/javascript">
         function addtraining(id, status, tid) {
-            // debugger;         
+            // debugger;
+            /*
+           alert(ids);            
+            alert(status);
+            alert(tid);            
+            */
             var obj = {
                 'Empid': id,
                 'Tid': tid,
@@ -60,8 +64,20 @@
             //return false;
             function OnComplete(result) {
                 // debugger;         
-                console.log("Success");             
-                var urlweb = "/ManageTrainning.aspx?id=" + tid +'&drop=1' ;
+                console.log("Success");
+               /*  var Emp_id = substring(result, 0, 3);
+                 var StatusEmp = substring(result, 3, 2);              
+            
+
+                   if (statusEmp == 1) // blue --> red
+                   {
+                       $(Empid).removeClass("btn-primary").addClass("btn-danger");
+                   }
+                   else // red --> blue
+                   {
+                       $(Empid).removeClass("btn-danger").addClass("btn-primary");
+                   }*/
+                var urlweb = "/ManageTrainning.aspx?id=" + tid;
                 alert(urlweb);
                 $.ajax({
                     url: urlweb,

@@ -50,35 +50,9 @@
             window.location.assign("/testpage.aspx?id="+id);
 
         }
-        function btndelete(tid)
+        function btndelete(id)
         {
-            var status = 3;
-            var obj = {                
-                'Tid': tid,
-                'Status': status
-            }
-            //   window.location.assign("/testpage.aspx?id=" + id);
-            $.ajax({
-                url: "Trainning_process.ashx",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: obj,
-                responseType: "json",
-                success: OnComplete,
-                error: OnFail
-            });
-            //return false;
-            function OnComplete(result) {
-                // debugger;         
-                console.log("Delete Success");           
-
-            }
-
-            function OnFail(result) {
-                alert('Request Failed');
-
-
-            }
+            window.location.assign("/testpage.aspx?id=" + id);
         }
         function btnmanage(id)
         {
@@ -87,5 +61,4 @@
 
 
     </script>
-    <script src="Scripts/jquery-3.1.0.js"></script>
 </asp:Content>

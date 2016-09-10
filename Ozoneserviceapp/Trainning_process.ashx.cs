@@ -21,7 +21,7 @@ namespace Ozoneserviceapp
             string Status = context.Request.QueryString["Status"];
             string postback = "";
             
-            if(Status=="1") /*Add  Person Trainning*/
+            if(Status=="1")
             {
                 AddTrainning(Empid,Tid);
                 postback = Empid+":0"; /*return 0 for red btn*/
@@ -29,13 +29,7 @@ namespace Ozoneserviceapp
                 context.Response.Write(Empid);
 
             }
-            else if (Status == "3") /*Delete Trainning*/
-            {
-                DelTrainnung(Tid);
-                context.Response.ContentType = "text/plain";
-                context.Response.Write(Tid);
-            }
-            else /*Delete  Person Trainning*/
+            else
             {
                 DeleteTrainning(Empid,Tid);
                 postback = Empid+":1"; /* return 1 for Blue btn*/ 
@@ -46,12 +40,6 @@ namespace Ozoneserviceapp
            
 
            
-        }
-        public void DelTrainnung(string tid)
-        {
-           // string DelSql = "";
-           // string postback = conSql.ExcuteSql(DelSql);            
-
         }
 
         public bool IsReusable
