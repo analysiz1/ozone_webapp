@@ -31,6 +31,24 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
         
         /// <summary>
+        /// ChkTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ChkTitle;
+        
+        /// <summary>
+        /// ddlTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTitle;
+        
+        /// <summary>
         /// lblOwner control.
         /// </summary>
         /// <remarks>
@@ -76,13 +94,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblDateStart;
         
         /// <summary>
-        /// dateStart control.
+        /// txtStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateStart;
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
         
         /// <summary>
         /// lblDateEnd control.
@@ -94,13 +112,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblDateEnd;
         
         /// <summary>
-        /// dateEnd control.
+        /// txtEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateEnd;
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
         /// lblParticipant control.

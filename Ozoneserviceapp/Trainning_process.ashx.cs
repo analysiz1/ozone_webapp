@@ -50,15 +50,15 @@ namespace Ozoneserviceapp
             }
         }
         
-        public string AddTrainning(string Emp_id,string Train_id)
+        public void AddTrainning(string Emp_id,string Train_id)
         {            
             string AddSql = "INSERT INTO tbManageTrainning(Trainning_id,Emp_id,Status) VALUES("+Train_id+"," + Emp_id + ",1)";
-            string postback = conSql.ExcuteSql(AddSql);
-            return postback;
+            conSql.ExcuteSql(AddSql);
+            
         }
         public void DeleteTrainning(string Emp_id, string Train_id)
         {
-            string DelSql = "DELETE FROM  tbManageTrainning where Trainning_id="+ Train_id +" and Emp_id = '"+Emp_id.ToString()+"' ";
+            string DelSql = "UPDATE dbo.tbTrainning SET Trainning_status='0' WHERE Trainning_id = " + Emp_id.ToString();
             conSql.ExcuteSql(DelSql);
             
         }

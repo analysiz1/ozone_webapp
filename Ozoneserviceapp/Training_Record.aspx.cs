@@ -1,7 +1,9 @@
 ﻿using Ozoneserviceapp.BaseClass;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,9 +12,36 @@ namespace Ozoneservice.UI.Training
 {
     public partial class Training_Record : System.Web.UI.Page
     {
+        public DataTable dtTitleTraining = null;
+        Connection_SQLServer conSql = new Connection_SQLServer();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(ChkTitle.Checked)
+            {
+                ddlTitle.Enabled = true;
+                txtTitle.Enabled = false;   
+            }
+            else
+            {
+                ddlTitle.Enabled = false;
+                txtTitle.Enabled = true;    
+            }
 
+
+            if (ddlTitle.Items.Count == 0)
+            {
+                string sql = "SELECT dbo.tbTrainning.Trainning_id,dbo.tbTrainning.Trainning_name," +
+                             "dbo.tbTrainning.Trainning_no + 1 as Trainning_no FROM dbo.tbTrainning";
+
+                dtTitleTraining = conSql.SqlQuery(sql);
+
+                ddlTitle.Items.Add("");
+                foreach (DataRow dr in dtTitleTraining.Rows)
+                {
+                    ddlTitle.Items.Add(dr["Trainning_name"].ToString() + " ครั้งที่ " + dr["Trainning_no"]);
+                }
+            }
         }
 
         private string CheckDataBeforeRun()
@@ -23,9 +52,17 @@ namespace Ozoneservice.UI.Training
 
                 if (txtTitle.Text.Trim().Length == 0)
                 {
-                    _msgErr = "กรุณากรอกข้อมูลหัวข้อการอบรม";
+                    if (!ChkTitle.Checked)
+                    {
+                        _msgErr = "กรุณากรอกข้อมูลหัวข้อการอบรม";
+                    }
+                    else if(ChkTitle.Checked && ddlTitle.SelectedItem.ToString().Trim().Length == 0)
+                    {
+                        _msgErr = "กรุณาเลือกหัวข้อการอบรม";
+                    }
                 }
-                else if (txtOwner.Text.Trim().Length == 0)
+                
+                if (txtOwner.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณากรอกข้อมูลผู้จัดการอบรม";
                 }
@@ -33,15 +70,26 @@ namespace Ozoneservice.UI.Training
                 {
                     _msgErr = "กรุณากรอกข้อมูลสถานที่การอบรม";
                 }
-                else if (dateStart.Value.Trim().Length == 0)
+                else if (txtStartDate.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณาเลือกวันที่เริ่มการอบรม";
                 }
-                else if (dateEnd.Value.Trim().Length == 0)
+                else if (txtEndDate.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณาเลือกวันที่สิ้นสุดการอบรม";
                 }
-                else if (txtParticipant.Text.Trim().Length == 0)
+
+                DateTime dtStart = Convert.ToDateTime(txtStartDate.Text);
+                DateTime dtEnd = Convert.ToDateTime(txtEndDate.Text);
+
+                double totalDay = (dtEnd - dtStart).TotalDays;
+
+                if(totalDay < 0)
+                {
+                    _msgErr = "กรุณาเลือก วันที่สิ้นสุดอบรม ให้มากกว่าหรือเท่ากับ วันที่เริ่มการอบรม";
+                }
+
+                if (txtParticipant.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณากรอกจำนวนผู้เข้าร่วมการอบรม";
                 }
@@ -62,8 +110,8 @@ namespace Ozoneservice.UI.Training
                 txtAddress.Text = string.Empty;
                 txtOwner.Text = string.Empty;
                 txtParticipant.Text = string.Empty;
-                dateStart.Value = null;
-                dateEnd.Value = null;
+                txtStartDate.Text = string.Empty;
+                txtEndDate.Text = string.Empty;
             }
             catch (Exception ex)
             {
@@ -79,43 +127,78 @@ namespace Ozoneservice.UI.Training
 
                 if (_msgErr != null)
                 {
-                    RegisterClientScriptBlock("OnLoad", "<script>alert('" + _msgErr + "!')</script>");
+                    Response.Write("<script>alert('" + _msgErr + "!')</script>");
+                    //RegisterClientScriptBlock("OnLoad", "<script>alert('" + _msgErr + "!')</script>");
                     return;
                 }
-                string title = txtTitle.Text;
-                string owner = txtOwner.Text;
-                string address = txtAddress.Text;
-                string startdate = "1/1/2559";
-                string enddate = "2/1/2559";
-                string participant = txtParticipant.Text;
 
-                string sql = "insert into tbTrainning (Trainning_name,Trainning_address,Trainning_startdate,Trainning_enddate,Trainning_owner,Trainning_no,Trainning_province)" +
-                             " values ('"+title+"','"+address+"','"+startdate+"','"+enddate+"','"+owner+"','1','1')";
-
+                string title = string.Empty;
+                string no = string.Empty;
+                string sql = string.Empty;
                 Connection_SQLServer conSql = new Connection_SQLServer();
 
-                bool chk = conSql.UpdateData(sql);
-
-                
-                //Response.Write("Title : " + txtTitle.Text + "\n");
-                //Response.Write("Owner : " + txtOwner.Text + "\n");
-                //Response.Write("Address : " + txtAddress.Text + "\n");
-                //Response.Write("Start Date : " + dateStart.Value + "\n");
-                //Response.Write("End Date : " + dateEnd.Value + "\n");
-                //Response.Write("Participant : " + txtParticipant.Text + "\n");
-                if (chk)
+                if (ChkTitle.Checked == false)
                 {
-                    RegisterClientScriptBlock("OnLoad", "<script>alert('Complete!')</script>");
+                    // *** ขาดกรณีชื่อซ้ำ Query ซ้ำ ให้แจ้งว่าซ้ำแล้วให้เลือก จากใน Combo แทน
+                    title = txtTitle.Text;
+                    no = "1";
+
+                    sql = "Select Trainning_id from tbTrainning where Trainning_name = '" + title + "'";
+
+                    DataTable dt = conSql.SqlQuery(sql);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtTitle.Text = string.Empty;
+                        Response.Write("<script>alert('ชื่อหัวข้อซ้ำกรุณาเลือกจากหัวข้อเดิมหรือเปลีย่นชื่อการอบรมใหม่!')</script>");
+                        return;
+                    }
                 }
                 else
                 {
-                    RegisterClientScriptBlock("OnLoad", "<script>alert('Save Fail!')</script>");
+                    string[] _strArr = Regex.Split(ddlTitle.SelectedItem.ToString(), " ครั้งที่ ");
+                    title = _strArr[0];
+                    no = _strArr[1];
                 }
+
+                string owner = txtOwner.Text;
+                string address = txtAddress.Text;
+                string startdate = txtStartDate.Text;
+                string enddate = txtEndDate.Text;
+                string participant = txtParticipant.Text;
+
+                sql = "insert into tbTrainning(Trainning_name,Trainning_address,Trainning_startdate,Trainning_enddate," +
+                      "Trainning_owner,Trainning_no,Trainning_province,Trainning_amount,Trainning_status) Values("+
+                      "'" + title + "','" + address + "','" + startdate + "','" + enddate + "','" + owner + "'," +
+                      "'" + no + "','0','" + participant + "','1')"; 
+
+                
+
+                bool chk = conSql.UpdateData(sql);
+
+                if (chk)
+                {
+                    //Response.Write("<script>alert('Complete!')</script>");
+                    RegisterClientScriptBlock("OnLoad", "<script>alert('Record Complete!')</script>");
+                    //Response.Redirect("Training_Record.aspx");
+                    
+                }
+                else
+                {
+                    //Response.Write("<script>alert('Save Fail!')</script>");
+                    RegisterClientScriptBlock("OnLoad", "<script>alert('Record Fail!')</script>");
+                    //Response.Redirect("Training_Record.aspx");
+                }
+                
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + Server.HtmlEncode(ex.Message.ToString()) + "')</script>");
             }
         }
+
+        
+
+
     }
 }

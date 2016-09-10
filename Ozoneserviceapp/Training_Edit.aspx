@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site_Main.Master" AutoEventWireup="true" CodeBehind="Training_Record.aspx.cs" Inherits="Ozoneservice.UI.Training.Training_Record" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site_Main.Master" AutoEventWireup="true" CodeBehind="Training_Edit.aspx.cs" Inherits="Ozoneserviceapp.Training_Edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    
     <script type="text/javascript">
 
         function EnterEvent(e) {
@@ -12,32 +11,17 @@
                 e.preventDefault();
             }
         }
-
-        function CheckTitle() {
-
-            if (document.getElementById('<%=ChkTitle.ClientID%>').checked) {
-                document.getElementById('<%=txtTitle.ClientID%>').disabled = true;
-                document.getElementById('<%=ddlTitle.ClientID%>').disabled = false;
-            }
-            else {
-                document.getElementById('<%=txtTitle.ClientID%>').disabled = false;
-                document.getElementById('<%=ddlTitle.ClientID%>').disabled = true;
-            }
-        }
-
     </script>
 
     <div>
+        <asp:Label ID="lblID" runat="server" Text="" Visible ="false"></asp:Label>
         <table align="center" class="table table-strip">
             <tr>
                 <td style="padding: 5px;">
                     <asp:Label ID="lblTitle" runat="server" Text="Label">หัวข้อ</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtTitle" runat="server" Width="198px" CssClass="form-control"></asp:TextBox>
-                    
-                    <asp:CheckBox ID="ChkTitle" runat="server" Text="เลือกหัวข้อเดิม" onclick="CheckTitle()"/>
-                    <asp:DropDownList ID="ddlTitle" runat="server" Enabled ="false" ></asp:DropDownList>
+                    <asp:TextBox ID="txtTitle" runat="server" Width="198px" CssClass="form-control" Enabled="False"></asp:TextBox>
                 </td>
             </tr>
 
@@ -87,18 +71,19 @@
                 </td>
             </tr>
 
+            
+
         </table>
 
         <table align="center">
             <tr>
                 <td>    
-                    <asp:Button ID="btnConfirm" runat="server" CssClass="btn btn-primary" Text="Confirm" onclick="btnConfirm_Click"/>
+                    <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary"   Text="Save" OnClick="btnSave_Click" />
                 </td>
                 <td>
-                    <asp:Button ID="btnClear" runat="server" CssClass="btn btn-danger"  Text="Clear" onclick="btnClear_Click" />
+                    <asp:Button ID="btnClear" runat="server" CssClass="btn btn-danger"  Text="Clear" OnClick="btnClear_Click"  />
                 </td>
             </tr>
         </table>
     </div>
-
 </asp:Content>

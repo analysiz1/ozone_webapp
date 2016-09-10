@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ozoneservice.UI.Training {
+namespace Ozoneserviceapp {
     
     
-    public partial class Training_View {
+    public partial class Training_Edit {
+        
+        /// <summary>
+        /// lblID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblID;
         
         /// <summary>
         /// lblTitle control.
@@ -22,67 +31,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblTitle;
         
         /// <summary>
-        /// ddlTitle control.
+        /// txtTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTitle;
-        
-        /// <summary>
-        /// lblDateStart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDateStart;
-        
-        /// <summary>
-        /// txtdateStart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdateStart;
-        
-        /// <summary>
-        /// lblDateEnd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDateEnd;
-        
-        /// <summary>
-        /// txtdateEnd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdateEnd;
-        
-        /// <summary>
-        /// lblAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAddress;
-        
-        /// <summary>
-        /// txtAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtTitle;
         
         /// <summary>
         /// lblOwner control.
@@ -103,6 +58,60 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.TextBox txtOwner;
         
         /// <summary>
+        /// lblAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAddress;
+        
+        /// <summary>
+        /// txtAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        
+        /// <summary>
+        /// lblDateStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateStart;
+        
+        /// <summary>
+        /// txtStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
+        
+        /// <summary>
+        /// lblDateEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateEnd;
+        
+        /// <summary>
+        /// txtEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
+        
+        /// <summary>
         /// lblParticipant control.
         /// </summary>
         /// <remarks>
@@ -121,21 +130,21 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.TextBox txtParticipant;
         
         /// <summary>
-        /// btnSearch control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// lblTraining_View control.
+        /// btnClear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTraining_View;
+        protected global::System.Web.UI.WebControls.Button btnClear;
     }
 }
