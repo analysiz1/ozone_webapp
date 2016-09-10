@@ -36,8 +36,8 @@
                 <td>
                     <asp:TextBox ID="txtTitle" runat="server" Width="198px" CssClass="form-control"></asp:TextBox>
                     
-                    <asp:CheckBox ID="ChkTitle" runat="server" OnClick="return CheckTitle()" Text="เลือกหัวข้อเดิม" />
-                    <asp:DropDownList ID="ddlTitle" runat="server" Enabled="False"></asp:DropDownList>
+                    <asp:CheckBox ID="ChkTitle" runat="server" Text="เลือกหัวข้อเดิม" onclick="CheckTitle()"/>
+                    <asp:DropDownList ID="ddlTitle" runat="server" Enabled ="false" ></asp:DropDownList>
                 </td>
             </tr>
 
@@ -64,7 +64,7 @@
                     <asp:Label ID="lblDateStart" runat="server" Text="Label">วันที่เริ่มอบรม</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtStartDate" runat="server" Width="198px" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtStartDate" runat="server" Width="198px" CssClass="form-control" type="date"></asp:TextBox>
                 </td>
             </tr>
 
@@ -73,7 +73,7 @@
                     <asp:Label ID="lblDateEnd" runat="server" Text="Label">วันที่สิ้นสุดอบรม</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtEndDate" runat="server" Width="198px" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtEndDate" runat="server" Width="198px" CssClass="form-control" type="date"></asp:TextBox>
                 </td>
             </tr>
 
@@ -92,7 +92,7 @@
         <table align="center">
             <tr>
                 <td>    
-                    <asp:Button ID="btnConfirm" runat="server" CssClass="btn btn-primary"   Text="Confirm" onclick="btnConfirm_Click" />
+                    <asp:Button ID="btnConfirm" runat="server" CssClass="btn btn-primary" Text="Confirm" onclick="btnConfirm_Click"/>
                 </td>
                 <td>
                     <asp:Button ID="btnClear" runat="server" CssClass="btn btn-danger"  Text="Clear" onclick="btnClear_Click" />

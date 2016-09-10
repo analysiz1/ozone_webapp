@@ -22,13 +22,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblTitle;
         
         /// <summary>
-        /// txtTitle control.
+        /// ddlTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitle;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTitle;
         
         /// <summary>
         /// lblDateStart control.
@@ -40,13 +40,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblDateStart;
         
         /// <summary>
-        /// dateStart control.
+        /// txtdateStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateStart;
+        protected global::System.Web.UI.WebControls.TextBox txtdateStart;
         
         /// <summary>
         /// lblDateEnd control.
@@ -58,13 +58,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblDateEnd;
         
         /// <summary>
-        /// dateEnd control.
+        /// txtdateEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateEnd;
+        protected global::System.Web.UI.WebControls.TextBox txtdateEnd;
         
         /// <summary>
         /// lblAddress control.
@@ -121,12 +121,21 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.TextBox txtParticipant;
         
         /// <summary>
-        /// Button1 control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// lblTraining_View control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTraining_View;
     }
 }
