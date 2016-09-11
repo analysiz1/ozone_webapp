@@ -18,9 +18,24 @@ namespace Ozoneservice.UI.Training
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             if (ddlTitle.Items.Count == 0)
             {
-                string sql = "SELECT dbo.tbTrainning.Trainning_name,dbo.tbTrainning.Trainning_no,dbo.tbTrainning.Trainning_id FROM dbo.tbTrainning where dbo.tbTrainning.Trainning_status = 1 order by dbo.tbTrainning.Trainning_name";
+               /* string sql = "SELECT dbo.tbTrainning.Trainning_name,dbo.tbTrainning.Trainning_no,dbo.tbTrainning.Trainning_id FROM dbo.tbTrainning where dbo.tbTrainning.Trainning_status = 1 order by dbo.tbTrainning.Trainning_name";*/
+                string sql = @"SELECT 
+c.DropinCode + '-' +a.Emp_id as Emp_id,
+a.Emp_title,
+a.Emp_name,
+c.DropinName as Dropin,
+c.DropinName as Province,
+d.RoleName
+FROM
+tbManageTrainning b
+left join tbEmployee a on  a.Emp_id = b.Emp_id 
+inner join tbDropin c on a.Emp_province = c.DropinID
+inner join tbEmployeeRole d on a.Emp_position = d.RoleId
+ where a.Emp_status = 1 and Trainning_id = "+ddlTitle.Text+" ";
+               
 
                 dtTitleTraining = conSql.SqlQuery(sql);
 
