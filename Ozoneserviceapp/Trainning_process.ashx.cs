@@ -25,7 +25,7 @@ namespace Ozoneserviceapp
            
                        
            
-            if(Status=="1") // add person
+            if(Status=="1") // add person 
             {
                 AddTrainning(Empid,Tid);
                 postback = Empid+":0"; /*return 0 for red btn*/
@@ -33,7 +33,7 @@ namespace Ozoneserviceapp
                 context.Response.Write(Empid);
 
             }
-            else if (Status == "11") // delete Trainning
+            else if (Status == "11") // delete Trainning 11/09/2559
             {
                 UpdatestatusTrainning(Tid);
                 context.Response.ContentType = "text/plain";
