@@ -48,7 +48,7 @@
         {
             window.location.assign("/Training_Edit.aspx?id=" + id);
         }
-        function btndelete(tid)
+        function btndelete(tid) /*ลบการอบรม*/
         {
             if (confirm('คุณต้องการลบหัวข้ออบรม ใช่หรือไม่?')) {
                 // window.location.assign("/testpage.aspx?id=" + id);
