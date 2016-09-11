@@ -53,50 +53,54 @@ namespace Ozoneservice.UI.Training
                 //sql = "SELECT c.DropinCode + '-' +a.Emp_id as Emp_id,a.Emp_title,a.Emp_name,c.DropinName as Dropin,c.DropinName as Province,d.RoleName " +
                       //"FROM tbEmployee a inner join tbManageTrainning b on  a.Emp_id = a.Emp_id inner join tbDropin c on a.Emp_province = c.DropinID " +
                       //"inner join tbEmployeeRole d on a.Emp_position = d.RoleId where b.Trainning_id = " + ddlTitle.SelectedValue.ToString();
-                
+
+                sql = "SELECT c.DropinCode + '-' +a.Emp_id as Emp_id,a.Emp_title,a.Emp_name,c.DropinName as Dropin,c.DropinName as Province,d.RoleName " +
+                      "FROM tbManageTrainning b left join tbEmployee a on  a.Emp_id = b.Emp_id inner join tbDropin c on a.Emp_province = c.DropinID " +
+                      "inner join tbEmployeeRole d on a.Emp_position = d.RoleId where a.Emp_status = 1 and Trainning_id = " + ddlTitle.SelectedValue.ToString();
+ 
                 dtData.Clear();
                 
-                //dtData = conSql.SqlQuery(sql);
+                dtData = conSql.SqlQuery(sql);
 
-                dtData.Columns.Add("id");
-                dtData.Columns.Add("prefixName");
-                dtData.Columns.Add("nameSurname");
-                dtData.Columns.Add("province");
-                dtData.Columns.Add("area");
-                dtData.Columns.Add("position");
+                //dtData.Columns.Add("id");
+                //dtData.Columns.Add("prefixName");
+                //dtData.Columns.Add("nameSurname");
+                //dtData.Columns.Add("province");
+                //dtData.Columns.Add("area");
+                //dtData.Columns.Add("position");
 
-                System.Data.DataRow dr = dtData.NewRow();
+                //System.Data.DataRow dr = dtData.NewRow();
 
-                dr["id"] = "OSO-42";
-                dr["prefixName"] = "นางสาว";
-                dr["nameSurname"] = "แก่นแก้ว  ชุมชาติ";
-                dr["province"] = "สงขลา";
-                dr["area"] = "อำเภอจะนะ";
-                dr["position"] = "เจ้าหน้าที่ภาคสนาม";
+                //dr["id"] = "OSO-42";
+                //dr["prefixName"] = "นางสาว";
+                //dr["nameSurname"] = "แก่นแก้ว  ชุมชาติ";
+                //dr["province"] = "สงขลา";
+                //dr["area"] = "อำเภอจะนะ";
+                //dr["position"] = "เจ้าหน้าที่ภาคสนาม";
 
-                dtData.Rows.Add(dr);
+                //dtData.Rows.Add(dr);
 
-                dr = dtData.NewRow();
+                //dr = dtData.NewRow();
 
-                dr["id"] = "OYA-60";
-                dr["prefixName"] = "นาย";
-                dr["nameSurname"] = "อับดุลรอฮมาน ยามา";
-                dr["province"] = "ยะลา";
-                dr["area"] = "อำเภอยะลา";
-                dr["position"] = "เจ้าหน้าที่ภาคสนาม";
+                //dr["id"] = "OYA-60";
+                //dr["prefixName"] = "นาย";
+                //dr["nameSurname"] = "อับดุลรอฮมาน ยามา";
+                //dr["province"] = "ยะลา";
+                //dr["area"] = "อำเภอยะลา";
+                //dr["position"] = "เจ้าหน้าที่ภาคสนาม";
 
-                dtData.Rows.Add(dr);
+                //dtData.Rows.Add(dr);
 
-                dr = dtData.NewRow();
+                //dr = dtData.NewRow();
 
-                dr["id"] = "OPA-12";
-                dr["prefixName"] = "นาย";
-                dr["nameSurname"] = "มูตะผา เหลาะหม๊ะ";
-                dr["province"] = "ปัตตานี";
-                dr["area"] = "อำเภอเมือง";
-                dr["position"] = "เจ้าหน้าที่ภาคสนาม";
+                //dr["id"] = "OPA-12";
+                //dr["prefixName"] = "นาย";
+                //dr["nameSurname"] = "มูตะผา เหลาะหม๊ะ";
+                //dr["province"] = "ปัตตานี";
+                //dr["area"] = "อำเภอเมือง";
+                //dr["position"] = "เจ้าหน้าที่ภาคสนาม";
 
-                dtData.Rows.Add(dr);
+                //dtData.Rows.Add(dr);
 
                 DataTable dt = new System.Data.DataTable();
 
