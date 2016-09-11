@@ -31,15 +31,20 @@ namespace Ozoneservice.UI.Training
 
             if (ddlTitle.Items.Count == 0)
             {
-                string sql = "SELECT dbo.tbTrainning.Trainning_id,dbo.tbTrainning.Trainning_name," +
-                             "dbo.tbTrainning.Trainning_no + 1 as Trainning_no FROM dbo.tbTrainning";
+                //string sql = "SELECT dbo.tbTrainning.Trainning_name," +
+                //             "dbo.tbTrainning.Trainning_no + 1 as Trainning_no FROM dbo.tbTrainning";
+
+                string sql = "select (q1.Trainning_name +' '+  'ครั้งที่'   + ' '+ CAST(MAX(q1.Trainno) as varchar)) as Trainning_Title " +
+                             "from (SELECT dbo.tbTrainning.Trainning_id,dbo.tbTrainning.Trainning_name,dbo.tbTrainning.Trainning_no + 1  as Trainno " +
+                              "FROM dbo.tbTrainning where dbo.tbTrainning.Trainning_status = 1) q1  GROUP BY q1.Trainning_name";
 
                 dtTitleTraining = conSql.SqlQuery(sql);
 
                 ddlTitle.Items.Add("");
                 foreach (DataRow dr in dtTitleTraining.Rows)
                 {
-                    ddlTitle.Items.Add(dr["Trainning_name"].ToString() + " ครั้งที่ " + dr["Trainning_no"]);
+                    //ddlTitle.Items.Add(dr["Trainning_name"].ToString() + " ครั้งที่ " + dr["Trainning_no"]);
+                    ddlTitle.Items.Add(dr["Trainning_Title"].ToString());
                 }
             }
         }
@@ -102,16 +107,11 @@ namespace Ozoneservice.UI.Training
             }
         }
 
-        protected void btnClear_Click(object sender, EventArgs e)
+        protected void btnBack_Click(object sender, EventArgs e)
         {
             try
             {
-                txtTitle.Text = string.Empty;
-                txtAddress.Text = string.Empty;
-                txtOwner.Text = string.Empty;
-                txtParticipant.Text = string.Empty;
-                txtStartDate.Text = string.Empty;
-                txtEndDate.Text = string.Empty;
+                Response.Redirect("Training_Manage.aspx");
             }
             catch (Exception ex)
             {
@@ -143,7 +143,7 @@ namespace Ozoneservice.UI.Training
                     title = txtTitle.Text;
                     no = "1";
 
-                    sql = "Select Trainning_id from tbTrainning where Trainning_name = '" + title + "'";
+                    sql = "Select Trainning_id from tbTrainning where Trainning_name = '" + title + "' and Trainning_status = 1";
 
                     DataTable dt = conSql.SqlQuery(sql);
 

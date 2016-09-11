@@ -20,7 +20,7 @@ namespace Ozoneservice.UI.Training
         {
             if (ddlTitle.Items.Count == 0)
             {
-                string sql = "SELECT dbo.tbTrainning.Trainning_name,dbo.tbTrainning.Trainning_no,dbo.tbTrainning.Trainning_id FROM dbo.tbTrainning order by dbo.tbTrainning.Trainning_name";
+                string sql = "SELECT dbo.tbTrainning.Trainning_name,dbo.tbTrainning.Trainning_no,dbo.tbTrainning.Trainning_id FROM dbo.tbTrainning where dbo.tbTrainning.Trainning_status = 1 order by dbo.tbTrainning.Trainning_name";
 
                 dtTitleTraining = conSql.SqlQuery(sql);
 
@@ -49,8 +49,14 @@ namespace Ozoneservice.UI.Training
                 txtAddress.Text = dtTitle.Rows[0]["Trainning_address"].ToString();
                 txtOwner.Text = dtTitle.Rows[0]["Trainning_owner"].ToString();
                 txtParticipant.Text = dtTitle.Rows[0]["Trainning_amount"].ToString();
+
+                //sql = "SELECT c.DropinCode + '-' +a.Emp_id as Emp_id,a.Emp_title,a.Emp_name,c.DropinName as Dropin,c.DropinName as Province,d.RoleName " +
+                      //"FROM tbEmployee a inner join tbManageTrainning b on  a.Emp_id = a.Emp_id inner join tbDropin c on a.Emp_province = c.DropinID " +
+                      //"inner join tbEmployeeRole d on a.Emp_position = d.RoleId where b.Trainning_id = " + ddlTitle.SelectedValue.ToString();
                 
                 dtData.Clear();
+                
+                //dtData = conSql.SqlQuery(sql);
 
                 dtData.Columns.Add("id");
                 dtData.Columns.Add("prefixName");

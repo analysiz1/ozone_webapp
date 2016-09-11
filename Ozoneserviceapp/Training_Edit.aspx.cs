@@ -132,15 +132,11 @@ namespace Ozoneserviceapp
             }
         }
 
-        protected void btnClear_Click(object sender, EventArgs e)
+        protected void btnBack_Click(object sender, EventArgs e)
         {
             try
             {
-                txtAddress.Text = string.Empty;
-                txtOwner.Text = string.Empty;
-                txtParticipant.Text = string.Empty;
-                txtStartDate.Text = string.Empty;
-                txtEndDate.Text = string.Empty;
+                Response.Redirect("Training_Manage.aspx");
             }
             catch (Exception ex)
             {

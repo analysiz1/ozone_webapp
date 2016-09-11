@@ -95,7 +95,7 @@
                     <asp:Button ID="btnConfirm" runat="server" CssClass="btn btn-primary" Text="Confirm" onclick="btnConfirm_Click"/>
                 </td>
                 <td>
-                    <asp:Button ID="btnClear" runat="server" CssClass="btn btn-danger"  Text="Clear" onclick="btnClear_Click" />
+                    <asp:Button ID="btnBack" runat="server" CssClass="btn btn-danger"  Text="Back" onclick="btnBack_Click" />
                 </td>
             </tr>
         </table>

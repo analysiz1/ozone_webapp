@@ -39,7 +39,7 @@ namespace Ozoneserviceapp
               {
              outputHTML += @"<tr>
                     <td style='border: 1px solid #333; width: 50% ; align='center'>
-                    <p align ='center'>"+ dr["Trainning_Name"].ToString() + "ครั้งที่" + dr["Trainning_no"].ToString()+"</p></td>";
+                    <p align ='center'>"+ dr["Trainning_Name"].ToString() + " ครั้งที่ " + dr["Trainning_no"].ToString()+"</p></td>";
 
              /*<asp:Button ID='btnEdit'  runat='server' CssClass='btn btn-primary'  Text='แก้ไข' align ='center' />*/
              /*<asp:Button ID='btnDelete' runat='server' CssClass='btn btn-primary'  Text='ลบ' align ='center' OnClientClick='return confirm('คุณต้องการบหัวข้อการอบรมนี้ ใช่หรือไม่ ?');' OnClick='btnDelete_Click'/>*/

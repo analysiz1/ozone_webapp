@@ -81,7 +81,7 @@
                     <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary"   Text="Save" OnClick="btnSave_Click" />
                 </td>
                 <td>
-                    <asp:Button ID="btnClear" runat="server" CssClass="btn btn-danger"  Text="Clear" OnClick="btnClear_Click"  />
+                    <asp:Button ID="btnBack" runat="server" CssClass="btn btn-danger"  Text="Back" OnClick="btnBack_Click"  />
                 </td>
             </tr>
         </table>
