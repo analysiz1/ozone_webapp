@@ -66,7 +66,7 @@
                     error: OnFail
                 });
                 function OnComplete(result) {
-                    var urlweb = "/Trainning_Manage.aspx";
+                    var urlweb = "/Training_Manage.aspx";
 
                     $.ajax({
                         url: urlweb,
