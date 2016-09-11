@@ -18,3 +18,4 @@ C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\bin\Ozoneservice
 C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.csprojResolveAssemblyReference.cache
 C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.dll
 C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.pdb
+C:\Users\Administrator.KKDV2-20120804Z\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.csprojResolveAssemblyReference.cache
