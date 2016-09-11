@@ -14,3 +14,8 @@ C:\Users\Administrator.KKDV2-20120804Z\Documents\GitHub\ozone_webapp\Ozoneservic
 C:\Users\Administrator.KKDV2-20120804Z\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.csprojResolveAssemblyReference.cache
 C:\Users\Administrator.KKDV2-20120804Z\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.dll
 C:\Users\Administrator.KKDV2-20120804Z\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.pdb
+C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\bin\Ozoneserviceapp.dll
+C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\bin\Ozoneserviceapp.pdb
+C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.csprojResolveAssemblyReference.cache
+C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.dll
+C:\Users\Analysiz\Documents\GitHub\ozone_webapp\Ozoneserviceapp\obj\Debug\Ozoneserviceapp.pdb
