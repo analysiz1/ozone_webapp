@@ -20,8 +20,12 @@ namespace Ozoneserviceapp
             string Tid = context.Request.QueryString["Tid"];       
             string Status = context.Request.QueryString["Status"];
             string postback = "";
-            
-            if(Status=="1")
+
+           
+           
+                       
+           
+            if(Status=="1") // add person
             {
                 AddTrainning(Empid,Tid);
                 postback = Empid+":0"; /*return 0 for red btn*/
@@ -29,16 +33,21 @@ namespace Ozoneserviceapp
                 context.Response.Write(Empid);
 
             }
-            else
+            else if (Status == "11") // delete Trainning
+            {
+                UpdatestatusTrainning(Tid);
+                context.Response.ContentType = "text/plain";
+                context.Response.Write(Tid);
+            }
+            else // delete person
             {
                 DeleteTrainning(Empid,Tid);
                 postback = Empid+":1"; /* return 1 for Blue btn*/ 
                 context.Response.ContentType = "text/plain";
                 context.Response.Write(Empid);
             }
-
-           
-
+                       
+            
            
         }
 
@@ -61,6 +70,14 @@ namespace Ozoneserviceapp
             string DelSql = "UPDATE dbo.tbTrainning SET Trainning_status='0' WHERE Trainning_id = " + Emp_id.ToString();
             conSql.ExcuteSql(DelSql);
             
+        }
+        public void UpdatestatusTrainning(string Train_id)
+        {
+            string updatesql = @"
+                                        UPDATE dbo.tbTrainning 
+                                        SET  Trainning_status = 0
+                                        WHERE Trainning_id = '"+Train_id.ToString()+"' ";
+            conSql.ExcuteSql(updatesql);
         }
     }
 }

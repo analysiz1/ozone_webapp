@@ -48,10 +48,42 @@
         {
             window.location.assign("/Training_Edit.aspx?id=" + id);
         }
-        function btndelete(id)
+        function btndelete(tid)
         {
             if (confirm('คุณต้องการลบหัวข้ออบรม ใช่หรือไม่?')) {
-                window.location.assign("/testpage.aspx?id=" + id);
+                // window.location.assign("/testpage.aspx?id=" + id);
+                var obj = {                   
+                    'Tid': tid,
+                    'Status': 11
+                }
+                $.ajax({
+                    url: "Trainning_process.ashx",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: obj,
+                    responseType: "json",
+                    success: OnComplete,
+                    error: OnFail
+                });
+                function OnComplete(result) {
+                    var urlweb = "/Trainning_Manage.aspx";
+
+                    $.ajax({
+                        url: urlweb,
+                        context: document.body,
+                        success: function (s, x) {
+                            $(this).html(s);
+                        }
+                    });
+
+                }
+                function OnFail(result) {
+                    alert('Request Failed');
+
+
+                }
+
+
             }
         }
         function btnmanage(id)
