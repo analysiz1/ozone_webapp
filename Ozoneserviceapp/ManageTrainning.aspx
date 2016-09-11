@@ -54,7 +54,7 @@
             //return false;
             function OnComplete(result) {
                 // debugger;         
-                console.log("Success");
+                console.log("Add person complete");
                /*  var Emp_id = substring(result, 0, 3);
                  var StatusEmp = substring(result, 3, 2);              
             
