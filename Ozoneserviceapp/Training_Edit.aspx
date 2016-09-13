@@ -14,6 +14,7 @@
     </script>
 
     <div>
+        <asp:Label ID="lblID" runat="server" Text="" Visible ="false"></asp:Label>
         <table align="center" class="table table-strip">
             <tr>
                 <td style="padding: 5px;">
@@ -47,7 +48,7 @@
                     <asp:Label ID="lblDateStart" runat="server" Text="Label">วันที่เริ่มอบรม</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtStartDate" runat="server" Width="198px" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtStartDate" runat="server" Width="198px" CssClass="form-control" type="date"></asp:TextBox>
                 </td>
             </tr>
 
@@ -56,7 +57,7 @@
                     <asp:Label ID="lblDateEnd" runat="server" Text="Label">วันที่สิ้นสุดอบรม</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtEndDate" runat="server" Width="198px" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtEndDate" runat="server" Width="198px" CssClass="form-control" type="date"></asp:TextBox>
                 </td>
             </tr>
 
@@ -70,15 +71,17 @@
                 </td>
             </tr>
 
+            
+
         </table>
 
         <table align="center">
             <tr>
                 <td>    
-                    <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary"   Text="Save" OnClick="btnSave_Click"  />
+                    <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary"   Text="Save" OnClick="btnSave_Click" />
                 </td>
                 <td>
-                    <asp:Button ID="btnClear" runat="server" CssClass="btn btn-danger"  Text="Clear" OnClick="btnClear_Click"  />
+                    <asp:Button ID="btnBack" runat="server" CssClass="btn btn-danger"  Text="Back" OnClick="btnBack_Click"  />
                 </td>
             </tr>
         </table>
