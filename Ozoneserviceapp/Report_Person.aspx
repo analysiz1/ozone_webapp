@@ -10,11 +10,11 @@
         <br />
         <p>ชื่อ-นามสกุลพนักงาน</p>
         <br />
-        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+        <asp:TextBox ID="txtEmpname" runat="server" CssClass="form-control"></asp:TextBox>
 
         <br />
         <br />
-          <asp:Button CssClass="btn tn-primary"  ID="Btns" runat="server" Text="ค้นหา" />
+          <asp:Button CssClass="btn tn-primary"  ID="Btns" runat="server" Text="ค้นหา" OnClick="Btns_Click" />
 
 
        

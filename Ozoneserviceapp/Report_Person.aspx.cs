@@ -121,6 +121,27 @@ namespace Ozoneservice.Train
             binddataEmp(sql);
         }
 
+        protected void Btns_Click(object sender, EventArgs e)
+        {
+            string empname = txtEmpname.Text;
+            string sql = @"SELECT 
+                            a.Emp_id ,
+                            e.DropinCode+'-'+a.Emp_id  as Empid,                                                      
+                            a.Emp_title,
+                            a.Emp_name,
+                            e.DropinName,          
+                            e.DropinCode as Province,
+							e.DropinCode as Dropin,         
+                            d.RoleName                                                
+                            FROM
+                            dbo.tbEmployee a                         
+                            INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
+                            inner join tbDropin e on a.Emp_province = e.DropinID 
+                            where a.Emp_status = 1 and a.Emp_name like '%"+empname+"%'";
+
+            binddataEmp(sql);
+        }
+
 
 
     }

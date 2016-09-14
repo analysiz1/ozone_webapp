@@ -31,13 +31,13 @@ namespace Ozoneservice.Train {
         protected global::System.Web.UI.WebControls.SqlDataSource Dropin;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtEmpname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtEmpname;
         
         /// <summary>
         /// Btns control.
