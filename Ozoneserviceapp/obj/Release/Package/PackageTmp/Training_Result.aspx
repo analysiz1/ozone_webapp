@@ -164,4 +164,5 @@
 
     </div>
 
+    <asp:Button ID="btn1" runat="server" Text="Button" OnClick="btn1_Click" />
 </asp:Content>

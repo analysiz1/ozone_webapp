@@ -28,7 +28,9 @@
                             <asp:Button ID="Btnlogin" runat="server" class="btn btn-lg btn-primary btn-block" Text="Sign in" OnClick="Btnlogin_Click" />
                          
                     </div>  
-                    <div class="col-lg-3"></div>  
+                    <div class="col-lg-3">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT * FROM [tbEmployee]"></asp:SqlDataSource>
+                    </div>  
                 </div>  
             </div>  
         </form>
