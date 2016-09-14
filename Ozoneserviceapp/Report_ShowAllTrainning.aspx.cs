@@ -17,15 +17,23 @@ namespace Ozoneservice
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string sql = "";
+            string sql = @"SELECT
+                            a.Trainning_name + 'ครั้งที่ ' + cast(a.Trainning_no as varchar) as Trainning_name,
+                            CONVERT(varchar(20),a.Trainning_startdate,103) as Trainning_startdate ,
+                            CONVERT(varchar(20),a.Trainning_enddate,103) as Trainning_enddate,
+                            a.Trainning_amount
+                            FROM
+                            dbo.tbTrainning a
+                            where a.Trainning_status = 1";
             Binddata(sql);
         }
 
         public void Binddata(string sql)
         {
+            int no = 1;
+            DataTable dt = new DataTable();
+            dtTraining = conSql.SqlQuery(sql);
             string innerHTML = "";
-
-
             innerHTML = @"<div class='table-responsive'>
             <table  class='table table-hover '  style='margin-left:30px;'  >
             <tr class='headtable'>
@@ -37,15 +45,16 @@ namespace Ozoneservice
             </tr>";
 
 
-
-            innerHTML += @" <tr class='headtable'>
-            <td>1</td>
-            <td>ต่อต้านยาเสพติด</td>
-            <td>30/07/2559</td>
-            <td>2/08/2559</td>
-            <td>258 คน</td>            
-            </tr>     ";
-
+            foreach (System.Data.DataRow dr in dtTraining.Rows)
+            {
+                innerHTML += @" <tr class='headtable'>
+            <td>"+no++ +@"</td>
+            <td>" + dr["Trainning_name"].ToString() + @"</td>
+            <td>" + dr["Trainning_startdate"] + @"</td>
+            <td>" + dr["Trainning_enddate"] + @"</td>
+            <td>" + dr["Trainning_amount"].ToString() + @"</td>            
+            </tr>";
+            }
  
             innerHTML += " </table></div>";
             lbltrainning.Text = innerHTML;
