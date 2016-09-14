@@ -14,8 +14,7 @@ namespace Ozoneservice
         /*08/09/2559*/
          Connection_SQLServer conSql = new Connection_SQLServer();
          public DataTable dtTraining = null;
-         string TrainningID=null;
-         string st = "1";
+         string TrainningID=null;         
          string innerHTML;
          string dropinID ;
 
@@ -32,11 +31,11 @@ namespace Ozoneservice
              }
              else
              {
-                 if (Session["dropin"].ToString() != null)
+                 /*if (Session["dropin"].ToString() != null)
                  {
                      dropinID = Session["dropin"].ToString();
                  }
-                 else { dropinID = "1"; }
+                 else { dropinID = "1"; }*/
                  if (dropinID != null)
                  {
                      TrainningName.Text = TrainningID.ToString();
@@ -183,14 +182,14 @@ namespace Ozoneservice
 
         protected void ddl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-                      
+            dropinID = ddl2.SelectedValue;
             string sql = @"SELECT 
                             a.Emp_id ,
                             a.Emp_name,                           
                             a.Emp_status,
                             d.RoleName,
-                            e.DropinName ,          
-                            e.DropinCode      ,          
+                            e.DropinName,          
+                            e.DropinCode,          
                             '" + TrainningID + @"' as tID,
                             b.Trainning_id,
                             ('" + TrainningID + @"' + ':' + CAST(ISNULL(b.Status,0) as varchar)) as tStatus                                 
@@ -199,7 +198,9 @@ namespace Ozoneservice
                             LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
                             LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
                             INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
-                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropinID + "";
+                            inner join tbDropin e on a.Emp_province = e.DropinID 
+                            where a.Emp_status = 1 and  e.DropinID = " + dropinID + " ";
+           // Response.Write(sql);
             binddataEmp(sql);
         }
        

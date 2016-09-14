@@ -67,8 +67,7 @@ namespace Ozoneserviceapp
         }
         public void DeleteEmpTrainning(string Emp_id, string Train_id)
         {
-            string DelSql = @"DELETE FROM tbManageTrainning  
-WHERE Emp_id ='"+Emp_id.ToString()+"' and Trainning_id ="+Train_id.ToString()+" ";
+            string DelSql = @"DELETE FROM tbManageTrainning  WHERE Emp_id ='"+Emp_id.ToString()+"' and Trainning_id ="+Train_id.ToString()+" ";
             conSql.ExcuteSql(DelSql);
             
         }

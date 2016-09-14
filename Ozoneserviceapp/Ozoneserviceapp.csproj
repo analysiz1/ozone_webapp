@@ -94,8 +94,8 @@
     <None Include="Properties\PublishProfiles\Ozone.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Report1.aspx" />
-    <Content Include="Report2-1.aspx" />
-    <Content Include="Report2.aspx" />
+    <Content Include="Report_EmpDetail.aspx" />
+    <Content Include="Report_Person.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
@@ -146,19 +146,19 @@
     <Compile Include="Report1.aspx.designer.cs">
       <DependentUpon>Report1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Report2-1.aspx.cs">
-      <DependentUpon>Report2-1.aspx</DependentUpon>
+    <Compile Include="Report_EmpDetail.aspx.cs">
+      <DependentUpon>Report_EmpDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Report2-1.aspx.designer.cs">
-      <DependentUpon>Report2-1.aspx</DependentUpon>
+    <Compile Include="Report_EmpDetail.aspx.designer.cs">
+      <DependentUpon>Report_EmpDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Report2.aspx.cs">
-      <DependentUpon>Report2.aspx</DependentUpon>
+    <Compile Include="Report_Person.aspx.cs">
+      <DependentUpon>Report_Person.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Report2.aspx.designer.cs">
-      <DependentUpon>Report2.aspx</DependentUpon>
+    <Compile Include="Report_Person.aspx.designer.cs">
+      <DependentUpon>Report_Person.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site_Main.Master.cs">
       <DependentUpon>Site_Main.Master</DependentUpon>

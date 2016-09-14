@@ -31,7 +31,7 @@
           <li><a href="/Training_Manage.aspx">จัดการหัวข้ออบรม</a></li>
           <%--<li><a href="/ManageTrainning.aspx">จัดการหัวข้ออบรม</a></li>--%>
               <li><a href="/Training_View.aspx">ข้อมูลการอบรม</a></li>          
-            <li><a href="/Report2.aspx">รายงานการอบรบ(รายบุคคล)</a></li>       
+            <li><a href="/Report_Person.aspx">รายงานการอบรบ(รายบุคคล)</a></li>       
             <li><a href="/Report1.aspx">รายงานการอบรม(ยอดรวมผู้เข้าร่วมทั้งหมด)</a></li>    
             <li><a href="/Training_Result.aspx">รายงานการอบรม(ภาพรวมการนับรายเก่า-รายใหม่/และตำแหน่งผู้เข้าร่วม)</a></li>
 

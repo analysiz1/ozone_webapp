@@ -50,10 +50,10 @@
             //return false;
             function OnComplete(result) {
                 // debugger;         
-<<<<<<< HEAD
+
                 var drop = 1;
-                console.log("Success");             
-=======
+                console.log("Success");            
+
                 console.log("Add person complete");
                /*  var Emp_id = substring(result, 0, 3);
                  var StatusEmp = substring(result, 3, 2);              
@@ -67,7 +67,7 @@
                    {
                        $(Empid).removeClass("btn-danger").addClass("btn-primary");
                    }*/
->>>>>>> origin/peerapon
+
                 var urlweb = "/ManageTrainning.aspx?id=" + tid;
               
                 $.ajax({
