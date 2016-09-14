@@ -93,7 +93,7 @@
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\Ozone.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
-    <Content Include="Report1.aspx" />
+    <Content Include="Report_ShowAllTrainning.aspx" />
     <Content Include="Report_EmpDetail.aspx" />
     <Content Include="Report_Person.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -139,12 +139,12 @@
       <DependentUpon>ManageTrainning.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report1.aspx.cs">
-      <DependentUpon>Report1.aspx</DependentUpon>
+    <Compile Include="Report_ShowAllTrainning.aspx.cs">
+      <DependentUpon>Report_ShowAllTrainning.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Report1.aspx.designer.cs">
-      <DependentUpon>Report1.aspx</DependentUpon>
+    <Compile Include="Report_ShowAllTrainning.aspx.designer.cs">
+      <DependentUpon>Report_ShowAllTrainning.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report_EmpDetail.aspx.cs">
       <DependentUpon>Report_EmpDetail.aspx</DependentUpon>
