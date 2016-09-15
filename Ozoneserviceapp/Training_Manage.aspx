@@ -38,14 +38,14 @@
                 });
                 function OnComplete(result) {
                     var urlweb = "/Training_Manage.aspx";
-
-                    $.ajax({
+                    window.location.assign(urlweb);
+                 /*   $.ajax({
                         url: urlweb,
                         context: document.body,
                         success: function (s, x) {
                             $(this).html(s);
                         }
-                    });
+                    });*/
 
                 }
                 function OnFail(result) {

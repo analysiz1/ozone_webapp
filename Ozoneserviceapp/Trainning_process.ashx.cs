@@ -78,6 +78,12 @@ namespace Ozoneserviceapp
                                         SET  Trainning_status = 0
                                         WHERE Trainning_id = '"+Train_id.ToString()+"' ";
             conSql.ExcuteSql(updatesql);
+
+            string updatetbManage = @" UPDATE dbo.tbManageTrainning
+                                        SET  Status = 0
+                                        WHERE Trainning_id = '"+Train_id.ToString()+"' ";
+
+            conSql.ExcuteSql(updatetbManage);
         }
     }
 }
