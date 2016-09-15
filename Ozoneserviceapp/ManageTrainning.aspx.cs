@@ -17,6 +17,7 @@ namespace Ozoneservice
          string TrainningID=null;         
          string innerHTML;
          string dropinID ;
+         
 
          protected void Page_Load(object sender, EventArgs e)
          {
