@@ -14,7 +14,7 @@
           
         </asp:DropDownList>
            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT * FROM [tbDropin]"></asp:SqlDataSource>
-           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT [DropinName] FROM [tbDropin]"></asp:SqlDataSource>
+           
         <br />
         <p>ชื่อ-นามสกุลพนักงาน</p>
         <br />
@@ -29,7 +29,8 @@
     <p>หัวข้ออบรม :  <asp:Label ID="TrainningName" runat="server" Text=""></asp:Label>   </p>
     <br />
     <asp:Label ID="lblEmp" runat="server" Text=""></asp:Label>
-
+    <br />
+     <br />
     <script type="text/javascript">
         function addtraining(id, status, tid,drop) {
             // debugger;           
@@ -55,20 +56,11 @@
                 console.log("Success");            
 
                 console.log("Add person complete");
-               /*  var Emp_id = substring(result, 0, 3);
-                 var StatusEmp = substring(result, 3, 2);              
-            
-
-                   if (statusEmp == 1) // blue --> red
-                   {
-                       $(Empid).removeClass("btn-primary").addClass("btn-danger");
-                   }
-                   else // red --> blue
-                   {
-                       $(Empid).removeClass("btn-danger").addClass("btn-primary");
-                   }*/
-
-                var urlweb = "/ManageTrainning.aspx?id=" + tid;
+              
+                
+                var urlweb = "/ManageTrainning.aspx?id=" + tid;              
+                window.location.assign(urlweb);
+                /*
               
                 $.ajax({
                     url: urlweb,
@@ -76,7 +68,7 @@
                     success: function (s, x) {
                         $(this).html(s);
                     }
-                });
+                });*/
 
             }
 

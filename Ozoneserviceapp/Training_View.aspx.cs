@@ -121,7 +121,7 @@ namespace Ozoneservice.UI.Training
                 htmlView += "<tr>";
                 for (int i = 0; i < Column.Count(); i++)
                 {
-                     htmlView += "<td style='border: 1px solid #333; width:" + (80/Column.Count()).ToString() + ";' align='center'>";
+                     htmlView += "<td style=' width:" + (80/Column.Count()).ToString() + ";' align='center'>";
                      htmlView += Column[i].ToString(); 
                      htmlView += "</td>";
                 }
@@ -140,7 +140,7 @@ namespace Ozoneservice.UI.Training
                     {
                         if(i == -1)
                         {
-                            htmlView += "<td style='border: 1px solid #333; width:" + (80/drTemp.Table.Columns.Count+1).ToString() + ";' align='center'>";
+                            htmlView += "<td style=' width:" + (80/drTemp.Table.Columns.Count+1).ToString() + ";' align='center'>";
                             htmlView += j.ToString(); 
                             htmlView += "</td>";
                         
@@ -148,7 +148,7 @@ namespace Ozoneservice.UI.Training
                         else
                         {
                         
-                            htmlView += "<td style='border: 1px solid #333; width: " + (80/drTemp.Table.Columns.Count+1).ToString() + ";' align='center'>";
+                            htmlView += "<td style=' width: " + (80/drTemp.Table.Columns.Count+1).ToString() + ";' align='center'>";
                             htmlView += drTemp[i].ToString(); 
                             htmlView += "</td>";
                         

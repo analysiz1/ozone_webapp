@@ -126,11 +126,11 @@ namespace Ozoneservice
                 string tstatus = dr["tStatus"].ToString();
                 if (tstatus.Equals(TrainningID.ToString() + ":0"))
                 {
-                    innerHTML += "<input type='Button' id='btnAdd' name='" + dr["Emp_id"].ToString() + "' onclick='addtraining(" + dr["Emp_id"] + ",1," + TrainningID + "); chkstatus();' runat='server' value='เข้ารับการอบรม' Class='btn btn-primary' />";
+                    innerHTML += "<input type='Button' id='btnAdd' name='" + dr["Emp_id"].ToString() + "' onclick='addtraining(" + dr["Emp_id"] + ",1," + TrainningID + "); ' runat='server' value='เข้ารับการอบรม' Class='btn btn-primary' />";
                 }                
                 else
                 {                    
-                    innerHTML += "<input type='Button' id='btnAdd' name='" + dr["Emp_id"].ToString() + "' onclick='addtraining(" + dr["Emp_id"] + ",0," + TrainningID + "); chkstatus();' runat='server' value='ยกเลิกการอบรม' Class='btn btn-danger' />";
+                    innerHTML += "<input type='Button' id='btnAdd' name='" + dr["Emp_id"].ToString() + "' onclick='addtraining(" + dr["Emp_id"] + ",0," + TrainningID + ");' runat='server' value='ยกเลิกการอบรม' Class='btn btn-danger' />";
                 }
                 innerHTML += "</td>";
                 innerHTML += "</tr>";

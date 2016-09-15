@@ -36,8 +36,8 @@
                 <td>
                     <asp:TextBox ID="txtTitle" runat="server" Width="198px" CssClass="form-control"></asp:TextBox>
                     
-                    <asp:CheckBox ID="ChkTitle" runat="server" Text="เลือกหัวข้อเดิม" onclick="CheckTitle()"/>
-                    <asp:DropDownList ID="ddlTitle" runat="server" Enabled ="false" ></asp:DropDownList>
+                    <asp:CheckBox ID="ChkTitle"  runat="server" Text="เลือกจากหัวข้อเดิม" onclick="CheckTitle()"/>
+                    <asp:DropDownList ID="ddlTitle" width="24%" CssClass="form-control" runat="server" Enabled ="false" ></asp:DropDownList>
                 </td>
             </tr>
 
