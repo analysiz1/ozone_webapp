@@ -16,7 +16,7 @@ namespace Ozoneservice
          public DataTable dtTraining = null;
          string TrainningID=null;         
          string innerHTML;
-         string dropinID ;
+         string dropinID = null ;
          
 
          protected void Page_Load(object sender, EventArgs e)
@@ -32,15 +32,19 @@ namespace Ozoneservice
              }
              else
              {
-                 /*if (Session["dropname"].ToString() != null)
+
+
+                 if (Session["dropname"] != null)
+             {
+                     dropinID = Session["dropname"].ToString();
+             }
+                 
+
+                     TrainningName.Text = TrainningID.ToString();
+                 
+                 if (dropinID !=null)
                  {
-                     dropinID = Session["dropin"].ToString();
-                 }
-                 else { dropinID = "1"; }*/
-                 TrainningName.Text = TrainningID.ToString();
-                 dropinID = Session["dropname"].ToString();
-                 if (dropinID != null)
-                 {                                                          
+                    
                      querystring = @"SELECT 
                             a.Emp_id ,
                             a.Emp_name,                           
@@ -56,7 +60,7 @@ namespace Ozoneservice
                             LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
                             LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
                             INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
-                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropinID + "";
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  e.DropinID = " + dropinID + " ";
                  }
                  else
                  {
@@ -116,10 +120,8 @@ namespace Ozoneservice
                 /*Content Emp*/
                 innerHTML += "<tr>";
                 innerHTML += "<td>" + no++ + "</td>";
-                innerHTML += "<td>" + dr["DropinCode"].ToString() + dr["Emp_id"].ToString() + "</td>";
-                innerHTML += "<td>"+"</td>";
-                innerHTML += "<td>" + dr["Emp_id"].ToString() + "</td>";
-                innerHTML += "<td>" + dr["Emp_name"].ToString()  + "</td>";
+                innerHTML += "<td>" + dr["DropinCode"].ToString() + dr["Emp_id"].ToString() + "</td>";                
+                innerHTML += "<td>" + dr["Emp_name"].ToString() + "</td>";                                
                 innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
                 innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
                 innerHTML += "<td>" + dr["RoleName"].ToString() + "</td>";
@@ -175,8 +177,9 @@ namespace Ozoneservice
             <td>ลำดับ</td>
             <td>รหัสพนักงาน</td>         
             <td>ชื่อ-นามสกุล</td>            
-            <td>สำนักงาน/พื้นที่</td>            
-            <td>ตำแหน่ง</td>
+            <td>สำนักงาน/พื้นที่</td> 
+            <td>จังหวัด</td>           
+            <td style= 'width:100px;'>ตำแหน่ง</td>
             <td> </td>
             </tr>";
             return thead;
@@ -185,7 +188,7 @@ namespace Ozoneservice
         protected void ddl2_SelectedIndexChanged(object sender, EventArgs e)
         {
             string dropin = ddl2.SelectedValue; // dropdown ที่ เลือก
-            Session["dropname"] =  dropinID;
+            Session["dropname"] = dropin;
             string sql = @"SELECT 
                             a.Emp_id ,
                             a.Emp_name,                           
