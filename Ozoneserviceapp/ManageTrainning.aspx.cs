@@ -183,7 +183,7 @@ namespace Ozoneservice
 
         protected void ddl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dropinID = ddl2.SelectedValue;
+            dropinID = ddl2.SelectedValue; // dropdown ที่ เลือก
             string sql = @"SELECT 
                             a.Emp_id ,
                             a.Emp_name,                           
