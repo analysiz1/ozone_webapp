@@ -8,7 +8,7 @@
                 <td style="padding: 5px;">
                     <asp:Label ID="lblTitle" runat="server" Text="Label">หัวข้อ</asp:Label>
                 </td>
-                <td><asp:DropDownList ID="ddlTitle" CssClass="form-control"  runat="server" ></asp:DropDownList></td>
+                <td><asp:DropDownList ID="ddlTitle" CssClass="form-control"  runat="server" onselectedindexchanged="btnSearch_Click" AutoPostBack="True"></asp:DropDownList></td>
                 <td style="padding: 5px;">
                     <asp:Label ID="lblDateStart" runat="server" Text="Label" >วันที่เริ่มอบรม</asp:Label>
                 </td> 
@@ -48,7 +48,7 @@
             
             </table>
 
-        <asp:Button ID="btnSearch" runat="server" Text="ค้นหา" CssClass="btn btn-primary" OnClick="btnSearch_Click" /> 
+        <asp:Button ID="btnSearch" runat="server" Text="ค้นหา" CssClass="btn btn-primary" Visible="false" OnClick="btnSearch_Click" /> 
         <br />
 
 

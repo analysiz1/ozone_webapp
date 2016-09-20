@@ -163,7 +163,7 @@ namespace Ozoneservice
                             LEFT join tbManageTrainning  b on a.Emp_id = b.Emp_id  and b.Trainning_id= " + TrainningID + @"
                             LEFT join tbTrainning c on b.Trainning_id = c.Trainning_id  
                             INNER JOIN tbEmployeeRole d on a.Emp_position = d.RoleId  
-                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  Emp_name like '%" + Empname + "'";
+                            inner join tbDropin e on a.Emp_province = e.DropinID where a.Emp_status = 1 and  Emp_name like '%" + Empname + "%'";
                                         
             binddataEmp(sql);
         

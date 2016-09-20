@@ -21,10 +21,14 @@ namespace Ozoneservice
                             a.Trainning_name + 'ครั้งที่ ' + cast(a.Trainning_no as varchar) as Trainning_name,
                             CONVERT(varchar(20),a.Trainning_startdate,103) as Trainning_startdate ,
                             CONVERT(varchar(20),a.Trainning_enddate,103) as Trainning_enddate,
-                            a.Trainning_amount
+                            count(a.Trainning_id) as Trainning_qty
                             FROM
-                            dbo.tbTrainning a
-                            where a.Trainning_status = 1";
+							tbManageTrainning b                            
+							INNER JOIN dbo.tbTrainning a on a.Trainning_id = b.Trainning_id 
+                            where a.Trainning_status = 1                         
+                            GROUP BY Trainning_name , a.Trainning_startdate , a.Trainning_enddate ,a.Trainning_no ,a.Trainning_id
+                            order by a.Trainning_id ASC";
+
             Binddata(sql);
         }
 
@@ -52,7 +56,7 @@ namespace Ozoneservice
             <td>" + dr["Trainning_name"].ToString() + @"</td>
             <td>" + dr["Trainning_startdate"] + @"</td>
             <td>" + dr["Trainning_enddate"] + @"</td>
-            <td>" + dr["Trainning_amount"].ToString() + @"</td>            
+            <td>" + dr["Trainning_qty"].ToString() + @"</td>            
             </tr>";
             }
  
