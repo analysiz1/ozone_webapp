@@ -5,6 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
      
+       <h1 style="padding-left:30px;">หัวข้ออบรม :  <asp:Label ID="TrainningName"   runat="server" Text=""></asp:Label>   </h1>
 
        <div class="form-group" style="width:20%; margin-left:30px;">       
                            
@@ -26,7 +27,7 @@
   
     <br />
     <br />
-    <p>หัวข้ออบรม :  <asp:Label ID="TrainningName" runat="server" Text=""></asp:Label>   </p>
+    
     <br />
     <asp:Label ID="lblEmp" runat="server" Text=""></asp:Label>
     <br />

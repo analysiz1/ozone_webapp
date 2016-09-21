@@ -13,6 +13,26 @@ namespace Ozoneserviceapp
         {
             string id = Request.QueryString["id"];
             Response.Write(id);
+
+            int a = 5;
+            int b = 4;
+            int c = 2;
+
+            a = a + b + c;
+            Response.Write("a:"+ a);
+            b++;
+            c = a + c;
+            b = ++b + c++;
+            Response.Write("b:" + b);
+
+
+            Response.Write("result a:" + a);
+            Response.Write("result b:" + b);
+            Response.Write("result c:" + c);
+
+
+
+
         }
     }
 }

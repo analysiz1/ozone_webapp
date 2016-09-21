@@ -47,6 +47,36 @@ namespace Ozoneserviceapp.BaseClass
             return postback; 
         }
 
+        public DataTable GetTrainning(string trainID)
+        {
+            try
+            {
+
+                DataTable dt = new DataTable();
+                sqlCon.Open();
+                string command = @"SELECT
+                                    Trainning_name ,
+                                    Trainning_no
+                                    FROM
+                                    dbo.tbTrainning
+                                    where Trainning_id = " + trainID+" ";
+                SqlDataAdapter da = new SqlDataAdapter(command, sqlCon);
+                da.Fill(dt);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw (new Exception("DBConnect error : '" + ex.Message + "'"));
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+
+
+        }
+
         public DataTable GetUser(string user , string pass)
         {
             try

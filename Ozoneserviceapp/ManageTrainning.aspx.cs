@@ -38,9 +38,12 @@ namespace Ozoneservice
              {
                      dropinID = Session["dropname"].ToString();
              }
-                 
+                 DataTable dtname =  conSql.GetTrainning(TrainningID);                 
+                  foreach (System.Data.DataRow Tdr in dtname.Rows)
+                  {
+                      TrainningName.Text = Tdr["Trainning_name"].ToString() + "ครั้งที่ " + Tdr["Trainning_no"].ToString();
 
-                     TrainningName.Text = TrainningID.ToString();
+                  }
                  
                  if (dropinID !=null)
                  {
