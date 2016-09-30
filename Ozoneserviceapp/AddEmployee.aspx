@@ -6,7 +6,8 @@
         <br />
         คำนำหน้า : <asp:DropDownList CssClass="dropdown" ID="Ddtitle" runat="server">
             <asp:ListItem Value="1">นาย</asp:ListItem>
-            <asp:ListItem Value="2">น.ส.</asp:ListItem>
+            <asp:ListItem Value="2">นาง</asp:ListItem>
+            <asp:ListItem Value="3">นางสาว</asp:ListItem>
         </asp:DropDownList>
         <br />
         <br />
@@ -16,7 +17,11 @@
         <asp:SqlDataSource ID="sqlrole" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT * FROM [tbEmployeeRole]"></asp:SqlDataSource>
         <br />
         <br />
-        <asp:Button ID="Btnadd" runat="server" Text="บันทึกข้อมูล" CssClass="btn btn-primary" />
+        Dropin : <asp:DropDownList ID="Dddropin" runat="server" CssClass="dropdown" DataSourceID="SqlDataSource1" DataTextField="DropinName" DataValueField="DropinID"></asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Ozoneservice_dbConnectionString %>" SelectCommand="SELECT * FROM [tbDropin]"></asp:SqlDataSource>
+        <br />
+        <br />
+        <asp:Button ID="Btnadd" runat="server" Text="บันทึกข้อมูล" CssClass="btn btn-primary" OnClick="Btnadd_Click" />
 
 
 

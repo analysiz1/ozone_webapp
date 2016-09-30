@@ -13,5 +13,10 @@ namespace Ozoneserviceapp
         {
 
         }
+
+        protected void Btnadd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
