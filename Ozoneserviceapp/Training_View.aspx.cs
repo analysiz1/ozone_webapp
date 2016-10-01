@@ -18,11 +18,11 @@ namespace Ozoneservice.UI.Training
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             if (ddlTitle.Items.Count == 0)
             {
                 string sql = "SELECT dbo.tbTrainning.Trainning_name,dbo.tbTrainning.Trainning_no,dbo.tbTrainning.Trainning_id FROM dbo.tbTrainning where dbo.tbTrainning.Trainning_status = 1 order by dbo.tbTrainning.Trainning_name";
-                
+
                 dtTitleTraining = conSql.SqlQuery(sql);
 
                 ddlTitle.Items.Add("");
@@ -37,11 +37,6 @@ namespace Ozoneservice.UI.Training
         {
             try
             {
-                if(ddlTitle.SelectedItem.ToString().Trim().Length == 0)
-                {
-                    return;
-                }
-
                 Connection_SQLServer conSql = new Connection_SQLServer();
 
                 string sql = "select * from tbTrainning where Trainning_id = " + ddlTitle.SelectedValue.ToString() + ";";
@@ -57,15 +52,15 @@ namespace Ozoneservice.UI.Training
                 txtParticipant.Text = dtTitle.Rows[0]["Trainning_amount"].ToString();
 
                 //sql = "SELECT c.DropinCode + '-' +a.Emp_id as Emp_id,a.Emp_title,a.Emp_name,c.DropinName as Dropin,c.DropinName as Province,d.RoleName " +
-                      //"FROM tbEmployee a inner join tbManageTrainning b on  a.Emp_id = a.Emp_id inner join tbDropin c on a.Emp_province = c.DropinID " +
-                      //"inner join tbEmployeeRole d on a.Emp_position = d.RoleId where b.Trainning_id = " + ddlTitle.SelectedValue.ToString();
+                //"FROM tbEmployee a inner join tbManageTrainning b on  a.Emp_id = a.Emp_id inner join tbDropin c on a.Emp_province = c.DropinID " +
+                //"inner join tbEmployeeRole d on a.Emp_position = d.RoleId where b.Trainning_id = " + ddlTitle.SelectedValue.ToString();
 
                 sql = "SELECT c.DropinCode + '-' +a.Emp_id as Emp_id,a.Emp_title,a.Emp_name,c.DropinName as Dropin,c.DropinName as Province,d.RoleName " +
                       "FROM tbManageTrainning b left join tbEmployee a on  a.Emp_id = b.Emp_id inner join tbDropin c on a.Emp_province = c.DropinID " +
                       "inner join tbEmployeeRole d on a.Emp_position = d.RoleId where a.Emp_status = 1 and Trainning_id = " + ddlTitle.SelectedValue.ToString();
- 
+
                 dtData.Clear();
-                
+
                 dtData = conSql.SqlQuery(sql);
 
                 //dtData.Columns.Add("id");
@@ -112,8 +107,8 @@ namespace Ozoneservice.UI.Training
 
                 dt = dtData;
 
-                string[] Column = { "ลำดับ", "รหัสผู้เข้าอบรม", "คำนำหน้า", "ชื่อ-นามสกุล", "จังหวัด", "สำนักงาน/พื้นที่", "ตำแหน่ง" }; 
-                
+                string[] Column = { "ลำดับ", "รหัสผู้เข้าอบรม", "คำนำหน้า", "ชื่อ-นามสกุล", "จังหวัด", "สำนักงาน/พื้นที่", "ตำแหน่ง", "" };
+
                 string htmlView = string.Empty;
 
                 htmlView += "<br />";
@@ -121,50 +116,57 @@ namespace Ozoneservice.UI.Training
                 htmlView += "<tr>";
                 for (int i = 0; i < Column.Count(); i++)
                 {
-                     htmlView += "<td style=' width:" + (80/Column.Count()).ToString() + ";' align='center'>";
-                     htmlView += Column[i].ToString(); 
-                     htmlView += "</td>";
+                    htmlView += "<td style=' width:" + (80 / Column.Count()).ToString() + ";' align='center'>";
+                    htmlView += Column[i].ToString();
+                    htmlView += "</td>";
                 }
                 htmlView += "</tr>";
-                
-            
-            int j = 0;
-            
-            foreach(System.Data.DataRow drTemp in dt.Rows )
-            {
-                j++;
-               
-                htmlView += "<tr>";
-                    
-                    for (int i = -1; i < drTemp.Table.Columns.Count; i++)
+
+
+                int j = 0;
+
+                foreach (System.Data.DataRow drTemp in dt.Rows)
+                {
+                    j++;
+
+                    htmlView += "<tr>";
+
+                    for (int i = -1; i < (drTemp.Table.Columns.Count + 1); i++)
                     {
-                        if(i == -1)
+                        if (i == -1)
                         {
-                            htmlView += "<td style=' width:" + (80/drTemp.Table.Columns.Count+1).ToString() + ";' align='center'>";
-                            htmlView += j.ToString(); 
+                            htmlView += "<td style=' width:" + (80 / drTemp.Table.Columns.Count + 1).ToString() + ";' align='center'>";
+                            htmlView += j.ToString();
                             htmlView += "</td>";
-                        
+
+                        }
+                        else if (i == drTemp.Table.Columns.Count)
+                        {
+                            string empID = drTemp["Emp_id"].ToString().Substring(drTemp["Emp_id"].ToString().IndexOf('-') + 1);
+
+                            htmlView += "<td style='width:" + (80 / drTemp.Table.Columns.Count + 1).ToString() + ";' align='center'>";
+                            htmlView += "<input type='Button' id='btnAdd' name='" + empID + "' onclick='addtraining(" + empID + ",0," + ddlTitle.SelectedValue.ToString() + ");' runat='server' value='ยกเลิกการอบรม' Class='btn btn-danger' />";
+                            htmlView += "</td>";
                         }
                         else
                         {
-                        
-                            htmlView += "<td style=' width: " + (80/drTemp.Table.Columns.Count+1).ToString() + ";' align='center'>";
-                            htmlView += drTemp[i].ToString(); 
+                            htmlView += "<td style=' width: " + (80 / drTemp.Table.Columns.Count + 1).ToString() + ";' align='center'>";
+                            htmlView += drTemp[i].ToString();
                             htmlView += "</td>";
-                        
-                        } 
-                    }
-                    
-               htmlView+= "</tr>";
-            
-            } 
-            
-            htmlView += "</table>";
-        
-            htmlView += "<p> ยอดรวมจำนวนผู้เข้าร่วมการอบรม/พัฒนาศักยภาพ </p>";
-            htmlView += "<p> (" + dt.Rows.Count + ")</p>";
 
-            lblTraining_View.Text = htmlView;
+                        }
+                    }
+
+                    htmlView += "</tr>";
+
+                }
+
+                htmlView += "</table>";
+
+                htmlView += "<p> ยอดรวมจำนวนผู้เข้าร่วมการอบรม/พัฒนาศักยภาพ </p>";
+                htmlView += "<p> (" + dt.Rows.Count + ")</p>";
+
+                lblTraining_View.Text = htmlView;
 
             }
             catch (Exception ex)

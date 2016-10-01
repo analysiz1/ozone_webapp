@@ -17,15 +17,15 @@ namespace Ozoneservice.UI.Training
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(ChkTitle.Checked)
+            if (ChkTitle.Checked)
             {
                 ddlTitle.Enabled = true;
-                txtTitle.Enabled = false;   
+                txtTitle.Enabled = false;
             }
             else
             {
                 ddlTitle.Enabled = false;
-                txtTitle.Enabled = true;    
+                txtTitle.Enabled = true;
             }
 
 
@@ -61,12 +61,12 @@ namespace Ozoneservice.UI.Training
                     {
                         _msgErr = "กรุณากรอกข้อมูลหัวข้อการอบรม";
                     }
-                    else if(ChkTitle.Checked && ddlTitle.SelectedItem.ToString().Trim().Length == 0)
+                    else if (ChkTitle.Checked && ddlTitle.SelectedItem.ToString().Trim().Length == 0)
                     {
                         _msgErr = "กรุณาเลือกหัวข้อการอบรม";
                     }
                 }
-                
+
                 if (txtOwner.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณากรอกข้อมูลผู้จัดการอบรม";
@@ -89,15 +89,15 @@ namespace Ozoneservice.UI.Training
 
                 double totalDay = (dtEnd - dtStart).TotalDays;
 
-                if(totalDay < 0)
+                if (totalDay < 0)
                 {
                     _msgErr = "กรุณาเลือก วันที่สิ้นสุดอบรม ให้มากกว่าหรือเท่ากับ วันที่เริ่มการอบรม";
                 }
 
-                if (txtParticipant.Text.Trim().Length == 0)
-                {
-                    _msgErr = "กรุณากรอกจำนวนผู้เข้าร่วมการอบรม";
-                }
+                //if (txtParticipant.Text.Trim().Length == 0)
+                //{
+                //    _msgErr = "กรุณากรอกเป้าหมายผู้เข้าอบรมการอบรม";
+                //}
 
                 return _msgErr;
             }
@@ -140,7 +140,7 @@ namespace Ozoneservice.UI.Training
                 if (ChkTitle.Checked == false)
                 {
                     // *** ขาดกรณีชื่อซ้ำ Query ซ้ำ ให้แจ้งว่าซ้ำแล้วให้เลือก จากใน Combo แทน
-                    title = txtTitle.Text;
+                    title = txtTitle.Text.Trim();
                     no = "1";
 
                     sql = "Select Trainning_id from tbTrainning where Trainning_name = '" + title + "' and Trainning_status = 1";
@@ -168,11 +168,11 @@ namespace Ozoneservice.UI.Training
                 string participant = txtParticipant.Text;
 
                 sql = "insert into tbTrainning(Trainning_name,Trainning_address,Trainning_startdate,Trainning_enddate," +
-                      "Trainning_owner,Trainning_no,Trainning_province,Trainning_amount,Trainning_status) Values("+
+                      "Trainning_owner,Trainning_no,Trainning_province,Trainning_amount,Trainning_status) Values(" +
                       "'" + title + "','" + address + "','" + startdate + "','" + enddate + "','" + owner + "'," +
-                      "'" + no + "','0','" + participant + "','1')"; 
+                      "'" + no + "','0','" + participant + "','1')";
 
-                
+
 
                 bool chk = conSql.UpdateData(sql);
 
@@ -181,7 +181,7 @@ namespace Ozoneservice.UI.Training
                     //Response.Write("<script>alert('Complete!')</script>");
                     RegisterClientScriptBlock("OnLoad", "<script>alert('Record Complete!')</script>");
                     //Response.Redirect("Training_Record.aspx");
-                    
+
                 }
                 else
                 {
@@ -189,7 +189,7 @@ namespace Ozoneservice.UI.Training
                     RegisterClientScriptBlock("OnLoad", "<script>alert('Record Fail!')</script>");
                     //Response.Redirect("Training_Record.aspx");
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -197,7 +197,7 @@ namespace Ozoneservice.UI.Training
             }
         }
 
-        
+
 
 
     }

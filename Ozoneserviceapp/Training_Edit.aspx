@@ -63,7 +63,7 @@
 
             <tr>
                 <td style="padding: 5px;">
-                    <asp:Label ID="lblParticipant" runat="server"  Text="Label">จำนวนผู้เข้าร่วม</asp:Label>
+                    <asp:Label ID="lblParticipant" runat="server"  Text="Label">เป้าหมายผู้เข้าอบรม</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="txtParticipant" runat="server"  CssClass="form-control" Width="198px"
