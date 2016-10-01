@@ -19,7 +19,7 @@ namespace Ozoneservice.UI.Training
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (ddlTitle.Items.Count == 0)
+            if (ddlTitle.Items.Count == 0 )
             {
                 string sql = "SELECT dbo.tbTrainning.Trainning_name,dbo.tbTrainning.Trainning_no,dbo.tbTrainning.Trainning_id FROM dbo.tbTrainning where dbo.tbTrainning.Trainning_status = 1 order by dbo.tbTrainning.Trainning_name";
 
@@ -31,12 +31,24 @@ namespace Ozoneservice.UI.Training
                     ddlTitle.Items.Add(new ListItem(dr["Trainning_name"].ToString() + " ครั้งที่ " + dr["Trainning_no"].ToString(), dr["Trainning_id"].ToString()));
                 }
             }
+
+            if (Request.QueryString["id"] != null)
+            {
+                ddlTitle.SelectedValue = Request.QueryString["id"];
+                btnSearch_Click(null, null);
+            }
+            
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
+                if (ddlTitle.SelectedItem.ToString().Trim().Length == 0)
+                {
+                    return;
+                }
+
                 Connection_SQLServer conSql = new Connection_SQLServer();
 
                 string sql = "select * from tbTrainning where Trainning_id = " + ddlTitle.SelectedValue.ToString() + ";";

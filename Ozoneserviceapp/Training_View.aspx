@@ -56,7 +56,7 @@
 
             
         <script type="text/javascript">
-            function addtraining(id, status, tid,drop) {
+            function addtraining(id, status, tid) {
                 // debugger; 
                 var obj = {
                     'Empid': id,
@@ -77,7 +77,11 @@
                     // debugger;  
                     var drop = 1;
                     console.log("Success");  
-                                    console.log("Add person complete");
+                    console.log("Add person complete");
+
+                    var urlweb = "/Training_View.aspx?id="+tid;
+                    window.location.assign(urlweb);
+
                     /*  var Emp_id = substring(result, 0, 3);
                       var StatusEmp = substring(result, 3, 2);              
                  
@@ -92,13 +96,13 @@
                         }*/
                     //var urlweb = "/ManageTrainning.aspx?id=" + tid;
               
-                    $.ajax({
+                  /*  $.ajax({
                         url: urlweb,
                         context: document.body,
                         success: function (s, x) {
                             $(this).html(s);
                         }
-                    });
+                    });*/
 
                 }
 
