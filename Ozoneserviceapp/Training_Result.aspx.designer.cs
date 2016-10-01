@@ -40,13 +40,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblDateStart;
         
         /// <summary>
-        /// dateStart control.
+        /// txtdateStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateStart;
+        protected global::System.Web.UI.WebControls.TextBox txtdateStart;
         
         /// <summary>
         /// lblDateEnd control.
@@ -58,13 +58,13 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.Label lblDateEnd;
         
         /// <summary>
-        /// dateEnd control.
+        /// txtdateEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateEnd;
+        protected global::System.Web.UI.WebControls.TextBox txtdateEnd;
         
         /// <summary>
         /// lblAddress control.
@@ -121,12 +121,21 @@ namespace Ozoneservice.UI.Training {
         protected global::System.Web.UI.WebControls.TextBox txtParticipant;
         
         /// <summary>
-        /// btn1 control.
+        /// lblTraining_Result1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn1;
+        protected global::System.Web.UI.WebControls.Label lblTraining_Result1;
+        
+        /// <summary>
+        /// lblTraining_Result2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTraining_Result2;
     }
 }

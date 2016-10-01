@@ -57,11 +57,11 @@ namespace Ozoneserviceapp
 
                 string sql = "UPDATE dbo.tbTrainning " +
                              "SET " +
-                             "Trainning_owner ='"+ owner +"'," +
-                             "Trainning_address = '"+address+"'," +
-                             "Trainning_startdate = '"+startdate+"'," +
-                             "Trainning_enddate = '"+enddate+"'," +
-                             "Trainning_amount = "+participant+"," +
+                             "Trainning_owner ='" + owner + "'," +
+                             "Trainning_address = '" + address + "'," +
+                             "Trainning_startdate = '" + startdate + "'," +
+                             "Trainning_enddate = '" + enddate + "'," +
+                             "Trainning_amount = " + participant + "," +
                              "Trainning_province = 1 " +
                              "WHERE Trainning_id = " + id;
                 bool chk = conSql.UpdateData(sql);
@@ -91,7 +91,7 @@ namespace Ozoneserviceapp
             try
             {
                 string _msgErr = null;
-                
+
                 if (txtOwner.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณากรอกข้อมูลผู้จัดการอบรม";
@@ -118,11 +118,11 @@ namespace Ozoneserviceapp
                 {
                     _msgErr = "กรุณาเลือก วันที่สิ้นสุดอบรม ให้มากกว่าหรือเท่ากับ วันที่เริ่มการอบรม";
                 }
-                
-                if (txtParticipant.Text.Trim().Length == 0)
-                {
-                    _msgErr = "กรุณากรอกจำนวนผู้เข้าร่วมการอบรม";
-                }
+
+                //if (txtParticipant.Text.Trim().Length == 0)
+                //{
+                //    _msgErr = "กรุณากรอกจำนวนผู้เข้าร่วมการอบรม";
+                //}
 
                 return _msgErr;
             }
