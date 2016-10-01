@@ -22,17 +22,20 @@ namespace Ozoneserviceapp
                 string sql = "select * from tbTrainning where Trainning_id = " + id + ";";
 
                 dtTraining = conSql.SqlQuery(sql);
-                lblID.Text = Request.QueryString["id"];
-                txtTitle.Text = dtTraining.Rows[0]["Trainning_name"].ToString();
-                txtOwner.Text = dtTraining.Rows[0]["Trainning_owner"].ToString();
-                txtAddress.Text = dtTraining.Rows[0]["Trainning_address"].ToString();
-                DateTime dateStart = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_startdate"].ToString());
-                DateTime dateEnd = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_enddate"].ToString());
+                if (dtTraining != null && dtTraining.Rows.Count != 0)
+                {
+                    lblID.Text = Request.QueryString["id"];
+                    txtTitle.Text = dtTraining.Rows[0]["Trainning_name"].ToString();
+                    txtOwner.Text = dtTraining.Rows[0]["Trainning_owner"].ToString();
+                    txtAddress.Text = dtTraining.Rows[0]["Trainning_address"].ToString();
+                    DateTime dateStart = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_startdate"].ToString());
+                    DateTime dateEnd = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_enddate"].ToString());
 
-                txtStartDate.Text = (dateStart.Year + "-" + dateStart.ToString("MM") + "-" + dateStart.ToString("dd")).ToString();
-                txtEndDate.Text = (dateEnd.Year + "-" + dateEnd.ToString("MM") + "-" + dateEnd.ToString("dd")).ToString();
+                    txtStartDate.Text = (dateStart.Year + "-" + dateStart.ToString("MM") + "-" + dateStart.ToString("dd")).ToString();
+                    txtEndDate.Text = (dateEnd.Year + "-" + dateEnd.ToString("MM") + "-" + dateEnd.ToString("dd")).ToString();
 
-                txtParticipant.Text = dtTraining.Rows[0]["Trainning_amount"].ToString();
+                    txtParticipant.Text = dtTraining.Rows[0]["Trainning_amount"].ToString();
+                }
             }
         }
 
