@@ -36,6 +36,7 @@ namespace Ozoneservice.UI.Training
             {
                 ddlTitle.SelectedValue = Request.QueryString["id"];
                 btnSearch_Click(null, null);
+                /*new 01/10/2559*/
             }
             
         }
