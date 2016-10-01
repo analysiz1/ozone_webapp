@@ -37,6 +37,11 @@ namespace Ozoneservice.UI.Training
         {
             try
             {
+                if (ddlTitle.SelectedItem.ToString().Trim().Length == 0)
+                {
+                    return;
+                }
+
                 Connection_SQLServer conSql = new Connection_SQLServer();
 
                 string sql = "select * from tbTrainning where Trainning_id = " + ddlTitle.SelectedValue.ToString() + ";";

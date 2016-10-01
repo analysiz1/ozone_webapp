@@ -77,7 +77,11 @@
                     // debugger;  
                     var drop = 1;
                     console.log("Success");  
-                                    console.log("Add person complete");
+                    console.log("Add person complete");
+
+                    var urlweb = "/Training_View.aspx";
+                    window.location.assign(urlweb);
+
                     /*  var Emp_id = substring(result, 0, 3);
                       var StatusEmp = substring(result, 3, 2);              
                  
