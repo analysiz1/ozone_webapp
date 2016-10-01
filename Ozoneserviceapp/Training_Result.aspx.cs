@@ -108,118 +108,60 @@ namespace Ozoneservice.UI.Training
 
                 for (int i = 0; i < (Province.Count() * 2); i++)
                 {
+                    string[] strTitle = Regex.Split(ddlTitle.SelectedItem.ToString(), " ครั้งที่ ");
+                    int countOld = 0;
+                    int countNew = 0;
+
+                    sql = @"SELECT
+                            a.Emp_id
+                            FROM
+                            dbo.tbManageTrainning a
+                            INNER JOIN tbTrainning  b on  a.Trainning_id = b.Trainning_id
+                            where b.Trainning_name = '" + strTitle[0] + @"' and b.Trainning_no < " + strTitle[1] + @" and b.Trainning_status=1 and a.Status=1
+                            GROUP BY a.Emp_id ";
+
+                    DataTable dtDataOld = conSql.SqlQuery(sql);
+
+                    sql = @"SELECT
+                            a.Emp_id
+                            FROM
+                            dbo.tbManageTrainning a
+                            INNER JOIN tbTrainning  b on  a.Trainning_id = b.Trainning_id
+                            INNER JOIN tbEmployee c on a.Emp_id = c.Emp_id
+                            INNER JOIN tbDropin d on c.Emp_province = d.DropinID
+                            INNER JOIN tbProvince e on e.ProvinceID = d.ProvinceID
+                            where a.Trainning_id = " + ddlTitle.SelectedValue.ToString() + @" and b.Trainning_status=1 and a.Status=1and e.ProvinceID = "+j;
+
+                    DataTable dtDataNew = conSql.SqlQuery(sql);
+
+                    if (dtDataOld != null)
+                    {
+                        foreach (DataRow dr in dtDataNew.Rows)
+                        {
+                            DataRow[] drArr = null;
+                            drArr = dtDataOld.Select("Emp_id = " + dr["Emp_id"]);
+
+                            if(drArr.Count() == 0)
+                            {
+                                countNew++;
+                            }
+                            else
+                            {
+                                countOld++;
+                            }
+                        }
+                    }
+
                     htmlView += "<td style='border: 1px solid #333; width: " + (80 / (Province.Count() * 2)).ToString() + "%;' align='center'>";
                     if (i % 2 == 0)
                     {
-                        string[] strTitle = Regex.Split(ddlTitle.SelectedItem.ToString(), " ครั้งที่ ");
-
-                        sql = @"select 
-                                SUM(cast(q2.status as int)) as result
-                                FROM
-                                (
-                                select 
-                                (case  
-                                when   count(q1.Emp_id)=1 then '1'
-                                else '0'  
-                                end ) as status
-                                FROM
-                                (
-                                SELECT
-                                a.Emp_id,
-                                b.Trainning_id,
-                                c.Trainning_no,
-                                d.DropinID
-                                FROM
-                                dbo.tbEmployee a
-                                inner join tbManageTrainning b on a.Emp_id = b.Emp_id
-                                inner join tbTrainning c on b.Trainning_id = c.Trainning_id
-                                inner join tbDropin d on a.Emp_province = d.DropinID
-                                inner join tbProvince e on d.ProvinceID = e.ProvinceID
-                                where c.Trainning_name= '" + strTitle[0] + @"'  and e.ProvinceID = " + j + @" and a.Emp_status=1 and c.Trainning_no <= '" + strTitle[1] + @"' and c.Trainning_status=1 and b.Status=1 ) as q1
-                                GROUP BY q1.Emp_id
-                                ) as q2
-                                where q2.status = 1";
-
-                        //sql = "select ProvinceID from tbProvince where ProvinceName = '" + Province[j - 1] + "'";
-
-                        DataTable dtDataNew = conSql.SqlQuery(sql);
-
-                        if (dtDataNew.Rows.Count == 0)
-                        {
-                            htmlView += "0";
-                            lstDataNew.Add(0);
-                        }
-                        else
-                        {
-                            if (dtDataNew.Rows[0][0].ToString().Equals(""))
-                            {
-                                htmlView += "0";
-                                lstDataNew.Add(0);
-                            }
-                            else
-                            {
-                                htmlView += dtDataNew.Rows[0][0];
-                                lstDataNew.Add(int.Parse(dtDataNew.Rows[0][0].ToString()));
-                            }
-                        }
-
-
+                        htmlView += countNew.ToString();
+                        lstDataNew.Add(countNew);
                     }
                     else
                     {
-                        string[] strTitle = Regex.Split(ddlTitle.SelectedItem.ToString(), " ครั้งที่ ");
-
-                        sql = @"select 
-                                SUM(cast(q2.status as int)) as result
-                                FROM
-                                (
-                                select 
-                                (case  
-                                when   count(q1.Emp_id)>1 then '1'
-                                else '0'  
-                                end ) as status
-                                FROM
-                                (
-                                SELECT
-                                a.Emp_id,
-                                b.Trainning_id,
-                                c.Trainning_no,
-                                d.DropinID
-                                FROM
-                                dbo.tbEmployee a
-                                inner join tbManageTrainning b on a.Emp_id = b.Emp_id
-                                inner join tbTrainning c on b.Trainning_id = c.Trainning_id
-                                inner join tbDropin d on a.Emp_province = d.DropinID
-                                inner join tbProvince e on d.ProvinceID = e.ProvinceID
-                                where c.Trainning_name= '" + strTitle[0] + @"'  and e.ProvinceID = " + j + @" and a.Emp_status=1 and c.Trainning_No <= '" + strTitle[1] + @"' and c.Trainning_status=1 and b.Status=1 ) as q1
-                                GROUP BY q1.Emp_id
-                                ) as q2
-                                where q2.status = 1";
-
-                        //sql = "select ProvinceID from tbProvince where ProvinceName = '" + Province[j - 1] + "'";
-
-                        DataTable dtDataOld = conSql.SqlQuery(sql);
-
-                        if (dtDataOld.Rows.Count == 0)
-                        {
-                            htmlView += "0";
-                            lstDataOld.Add(0);
-                        }
-                        else
-                        {
-                            if (dtDataOld.Rows[0][0].ToString().Equals(""))
-                            {
-                                htmlView += "0";
-                                lstDataOld.Add(0);
-                            }
-                            else
-                            {
-                                htmlView += dtDataOld.Rows[0][0];
-                                lstDataOld.Add(int.Parse(dtDataOld.Rows[0][0].ToString()));
-                            }
-                        }
-
-
+                        htmlView += countOld.ToString();
+                        lstDataOld.Add(countOld);
 
                         j++;
                     }
@@ -243,8 +185,8 @@ namespace Ozoneservice.UI.Training
 
                 htmlView = string.Empty;
 
-                string[] Department = { "ส่วนกลาง", "ผู้ประสานงานภาค", "ผู้จัดการศูนย์", "จนท.ธุรการ-การเงิน", "เจ้าหน้าที่ภาคสนาม", "แกนนำอาสาสมัคร", "อาสาสมัคร" };
-                string[] DepAmount = { "1", "2", "3", "4", "5", "6", "7" };
+                string[] Department = { "ส่วนกลาง", "ผู้ประสานงานภาค", "ผู้จัดการศูนย์บริการ", "จนท.ธุรการ-การเงิน", "เจ้าหน้าที่ภาคสนาม", "แกนนำอาสาสมัคร", "อาสาสมัคร" };
+                //string[] DepAmount = { "1", "2", "3", "4", "5", "6", "7" };
 
                 htmlView += "<p align='center'> ตำแหน่งงาน </p>";
 
@@ -258,11 +200,30 @@ namespace Ozoneservice.UI.Training
                 }
                 htmlView += "</tr>";
 
+                
+
                 htmlView += "<tr>";
-                for (int i = 0; i < DepAmount.Count(); i++)
+                for (int i = 0; i < Department.Count(); i++)
                 {
-                    htmlView += "<td style='border: 1px solid #333; width: " + (80 / DepAmount.Count()).ToString() + "%;' align='center'>";
-                    htmlView += DepAmount[i];
+                    sql = @"select 
+                        COUNT(a.Emp_id) as Qty,
+                        c.Rolename
+                        from tbManageTrainning a
+                        inner join tbEmployee b on a.Emp_id = b.Emp_id
+                        inner join tbEmployeeRole c on b.Emp_position = c.RoleId
+                        where a.Trainning_id = " + ddlTitle.SelectedValue.ToString() + @" and c.Rolename = '" + Department[i] + @"'
+                        GROUP BY c.Rolename";
+
+                    DataTable dtDepartment = conSql.SqlQuery(sql);
+                    int countDepartment = 0; 
+
+                    if(dtDepartment.Rows.Count != 0)
+                    {
+                        countDepartment = int.Parse(dtDepartment.Rows[0][0].ToString());
+                    }
+
+                    htmlView += "<td style='border: 1px solid #333; width: " + (80 / Department.Count()).ToString() + "%;' align='center'>";
+                    htmlView += countDepartment;
                     htmlView += "</td>";
                 }
                 htmlView += "</tr>";
