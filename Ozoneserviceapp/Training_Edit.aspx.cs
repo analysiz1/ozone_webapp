@@ -22,17 +22,20 @@ namespace Ozoneserviceapp
                 string sql = "select * from tbTrainning where Trainning_id = " + id + ";";
 
                 dtTraining = conSql.SqlQuery(sql);
-                lblID.Text = Request.QueryString["id"];
-                txtTitle.Text = dtTraining.Rows[0]["Trainning_name"].ToString();
-                txtOwner.Text = dtTraining.Rows[0]["Trainning_owner"].ToString();
-                txtAddress.Text = dtTraining.Rows[0]["Trainning_address"].ToString();
-                DateTime dateStart = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_startdate"].ToString());
-                DateTime dateEnd = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_enddate"].ToString());
+                if (dtTraining != null && dtTraining.Rows.Count != 0)
+                {
+                    lblID.Text = Request.QueryString["id"];
+                    txtTitle.Text = dtTraining.Rows[0]["Trainning_name"].ToString();
+                    txtOwner.Text = dtTraining.Rows[0]["Trainning_owner"].ToString();
+                    txtAddress.Text = dtTraining.Rows[0]["Trainning_address"].ToString();
+                    DateTime dateStart = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_startdate"].ToString());
+                    DateTime dateEnd = Convert.ToDateTime(dtTraining.Rows[0]["Trainning_enddate"].ToString());
 
-                txtStartDate.Text = (dateStart.Year + "-" + dateStart.ToString("MM") + "-" + dateStart.ToString("dd")).ToString();
-                txtEndDate.Text = (dateEnd.Year + "-" + dateEnd.ToString("MM") + "-" + dateEnd.ToString("dd")).ToString();
+                    txtStartDate.Text = (dateStart.Year + "-" + dateStart.ToString("MM") + "-" + dateStart.ToString("dd")).ToString();
+                    txtEndDate.Text = (dateEnd.Year + "-" + dateEnd.ToString("MM") + "-" + dateEnd.ToString("dd")).ToString();
 
-                txtParticipant.Text = dtTraining.Rows[0]["Trainning_amount"].ToString();
+                    txtParticipant.Text = dtTraining.Rows[0]["Trainning_amount"].ToString();
+                }
             }
         }
 
@@ -57,11 +60,11 @@ namespace Ozoneserviceapp
 
                 string sql = "UPDATE dbo.tbTrainning " +
                              "SET " +
-                             "Trainning_owner ='"+ owner +"'," +
-                             "Trainning_address = '"+address+"'," +
-                             "Trainning_startdate = '"+startdate+"'," +
-                             "Trainning_enddate = '"+enddate+"'," +
-                             "Trainning_amount = "+participant+"," +
+                             "Trainning_owner ='" + owner + "'," +
+                             "Trainning_address = '" + address + "'," +
+                             "Trainning_startdate = '" + startdate + "'," +
+                             "Trainning_enddate = '" + enddate + "'," +
+                             "Trainning_amount = " + participant + "," +
                              "Trainning_province = 1 " +
                              "WHERE Trainning_id = " + id;
                 bool chk = conSql.UpdateData(sql);
@@ -91,7 +94,7 @@ namespace Ozoneserviceapp
             try
             {
                 string _msgErr = null;
-                
+
                 if (txtOwner.Text.Trim().Length == 0)
                 {
                     _msgErr = "กรุณากรอกข้อมูลผู้จัดการอบรม";
@@ -118,11 +121,11 @@ namespace Ozoneserviceapp
                 {
                     _msgErr = "กรุณาเลือก วันที่สิ้นสุดอบรม ให้มากกว่าหรือเท่ากับ วันที่เริ่มการอบรม";
                 }
-                
-                if (txtParticipant.Text.Trim().Length == 0)
-                {
-                    _msgErr = "กรุณากรอกจำนวนผู้เข้าร่วมการอบรม";
-                }
+
+                //if (txtParticipant.Text.Trim().Length == 0)
+                //{
+                //    _msgErr = "กรุณากรอกจำนวนผู้เข้าร่วมการอบรม";
+                //}
 
                 return _msgErr;
             }

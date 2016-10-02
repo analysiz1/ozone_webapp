@@ -125,8 +125,7 @@ namespace Ozoneservice
                 innerHTML += "<td>" + no++ + "</td>";
                 innerHTML += "<td>" + dr["DropinCode"].ToString() + dr["Emp_id"].ToString() + "</td>";                
                 innerHTML += "<td>" + dr["Emp_name"].ToString() + "</td>";                                
-                innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
-                innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
+                innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";                ;
                 innerHTML += "<td>" + dr["RoleName"].ToString() + "</td>";
                 innerHTML += "<td> </td>";
                 innerHTML += "<td>";
@@ -180,10 +179,10 @@ namespace Ozoneservice
             <td>ลำดับ</td>
             <td>รหัสพนักงาน</td>         
             <td>ชื่อ-นามสกุล</td>            
-            <td>สำนักงาน/พื้นที่</td> 
-            <td>จังหวัด</td>           
+            <td>สำนักงาน/พื้นที่</td>                     
             <td style= 'width:100px;'>ตำแหน่ง</td>
-            <td> </td>
+            <td></td>
+<td></td>
             </tr>";
             return thead;
         }

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="display:block;" align="center" >
+    <div style="display:block;" align="center">
             <table class="table table-bordered">
             <tr>
                 <td style="padding: 5px;">
@@ -38,7 +38,7 @@
                 <td><asp:TextBox ID="txtOwner" CssClass="form-control" runat="server" readonly="true" Width="198px"></asp:TextBox></td>
             
                 <td style="padding: 5px;">
-                    <asp:Label ID="lblParticipant" runat="server" Text="Label">จำนวนผู้เข้าร่วม</asp:Label>
+                    <asp:Label ID="lblParticipant" runat="server" Text="Label">เป้าหมายผู้เข้าอบรม</asp:Label>
                 </td>
                 <td> 
                     <asp:TextBox ID="txtParticipant" CssClass="form-control" readonly="true" runat="server" Width="198px" 
@@ -48,12 +48,74 @@
             
             </table>
 
-        <asp:Button ID="btnSearch" runat="server" Text="ค้นหา" CssClass="btn btn-primary" Visible="false" OnClick="btnSearch_Click" /> 
+        <%--<asp:Button ID="btnSearch" runat="server" Text="ค้นหา" CssClass="btn btn-primary" OnClick="btnSearch_Click" />--%> 
         <br />
 
 
         <asp:Label ID="lblTraining_View" runat="server" Text=""></asp:Label>
 
             
+        <script type="text/javascript">
+            function addtraining(id, status, tid) {
+                // debugger; 
+                var obj = {
+                    'Empid': id,
+                    'Tid': tid,
+                    'Status': status
+                }
+                $.ajax({
+                    url: "Trainning_process.ashx",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: obj,
+                    responseType: "json",
+                    success: OnComplete,
+                    error: OnFail
+                });
+                //return false;
+                function OnComplete(result) {
+                    // debugger;  
+                    var drop = 1;
+                    console.log("Success");  
+                    console.log("Add person complete");
+
+                    var urlweb = "/Training_View.aspx?id="+tid;
+                    window.location.assign(urlweb);
+
+                    /*  var Emp_id = substring(result, 0, 3);
+                      var StatusEmp = substring(result, 3, 2);              
+                 
+     
+                        if (statusEmp == 1) // blue --> red
+                        {
+                            $(Empid).removeClass("btn-primary").addClass("btn-danger");
+                        }
+                        else // red --> blue
+                        {
+                            $(Empid).removeClass("btn-danger").addClass("btn-primary");
+                        }*/
+                    //var urlweb = "/ManageTrainning.aspx?id=" + tid;
+              
+                  /*  $.ajax({
+                        url: urlweb,
+                        context: document.body,
+                        success: function (s, x) {
+                            $(this).html(s);
+                        }
+                    });*/
+
+                }
+
+                function OnFail(result) {
+                    alert('Request Failed');
+              
+
+                }
+            }
+      
+    </script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
         </div>
 </asp:Content>

@@ -72,8 +72,7 @@ namespace Ozoneservice.Train
                 innerHTML += "<td>" + dr["Empid"].ToString() + "</td>";                
                 innerHTML += "<td>" + dr["Emp_title"].ToString() + "</td>";
                 innerHTML += "<td>" + dr["Emp_name"].ToString() + "</td>";
-                innerHTML += "<td>" + dr["Province"].ToString() + "</td>";
-                innerHTML += "<td>" + dr["Dropin"].ToString() + "</td>";
+                innerHTML += "<td>" + dr["DropinName"].ToString() + "</td>";
                 innerHTML += "<td>" + dr["RoleName"].ToString() + "</td>";                
                 innerHTML += "<td>";
                 innerHTML += "<input type='Button' id='btnAdd' name='" + dr["Empid"].ToString() + "' onclick='redirect("+dr["Emp_id"].ToString()+")' runat='server' value='ดูรายละเอียดการอบรม' Class='btn btn-primary' />";                               
@@ -93,8 +92,7 @@ namespace Ozoneservice.Train
             <td>ลำดับ</td>
             <td>รหัสพนักงาน</td>            
             <td>คำนำหน้า</td>
-            <td>ชื่อ-นามสกุล</td>
-            <td>จังหวัด</td>
+            <td>ชื่อ-นามสกุล</td>            
             <td>สำนักงาน/พื้นที่</td>            
             <td>ตำแหน่ง</td>
             <td></td>

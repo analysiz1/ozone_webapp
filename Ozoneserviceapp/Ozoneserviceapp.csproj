@@ -71,6 +71,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Css\Style1.css" />
+    <Content Include="EditEmployee.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Login.aspx" />
     <Content Include="Mainpage.aspx" />
@@ -125,6 +126,13 @@
       <DependentUpon>AddEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="BaseClass\Connection_SQLServer.cs" />
+    <Compile Include="EditEmployee.aspx.cs">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditEmployee.aspx.designer.cs">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
